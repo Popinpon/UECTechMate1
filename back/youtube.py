@@ -24,6 +24,9 @@ def get_chat_id(yt_url):
     if 'activeLiveChatId' in liveStreamingDetails.keys():
         chat_id = liveStreamingDetails['activeLiveChatId']
         print('get_chat_id done!')
+        currViewrs=liveStreamingDetails['concurrentViewers']
+        viewerstext  = '[{} viewrs]\n'.format(currViewrs)
+        print(viewerstext)
     else:
         chat_id = None
         print('NOT live')
@@ -38,7 +41,7 @@ def get_chat(chat_id, pageToken, log_file):
     https://developers.google.com/youtube/v3/live/docs/liveChatMessages/list
     '''
     url    = 'https://www.googleapis.com/youtube/v3/liveChat/messages'
-    params = {'key': YT_API_KEY, 'liveChatId': chat_id, 'part': 'id,snippet,authorDetails'}
+    params = {'key': YT_API_KEY, 'liveChatId': chat_id, 'part': 'id,snippet'}#,authorDetails'}#コメント主のチャンネル詳細
     if type(pageToken) == str:
         params['pageToken'] = pageToken
 
@@ -48,10 +51,10 @@ def get_chat(chat_id, pageToken, log_file):
         for item in data['items']:
             channelId = item['snippet']['authorChannelId']
             msg       = item['snippet']['displayMessage']
-            usr       = item['authorDetails']['displayName']
-            #supChat   = item['snippet']['superChatDetails']
+            #usr       = item['authorDetails']['displayName']#コメント主名
+            #supChat   = item['snippet']['superChatDetails']#スパチャ
             #supStic   = item['snippet']['superStickerDetails']
-            log_text  = '[by {}  https://www.youtube.com/channel/{}]\n  {}'.format(usr, channelId, msg)
+            log_text  = msg
             with open(log_file, 'a') as f:
                 print(log_text, file=f)
                 print(log_text)
@@ -68,7 +71,7 @@ def get_chat(chat_id, pageToken, log_file):
 
 def main(yt_url):
     slp_time        = 10 #sec
-    iter_times      = 20 #回
+    iter_times      = 2 #回
     take_time       = slp_time / 60 * iter_times
     print('{}分後　終了予定'.format(take_time))
     print('work on {}'.format(yt_url))
