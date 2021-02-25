@@ -3,18 +3,21 @@
     <div class="flex justify-center">
       <img alt="Vue logo" src="static/img/logo.png">
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <CalendarPage/>
+    <!-- <Hallo/> -->
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import CalendarPage from './components/CalendarPage.vue'
+// import Hallo from './components/HelloWorld'
 
 export default Vue.extend({
   name: 'App',
   components: {
-    HelloWorld
+    CalendarPage,
+    // Hallo
   }
 })
 </script>
