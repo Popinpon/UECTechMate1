@@ -6,13 +6,21 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   mode: 'development',
-  entry: './src/main.js',
+  entry: './src/main.ts',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, '../dist/static')
   },
   module:{
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        loader: "ts-loader",
+        exclude: "/node_modules/",
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
       {
         test: /\.vue$/,
         loader: "vue-loader"
@@ -46,13 +54,12 @@ module.exports = {
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin(),
   ],
-  // import 文で .ts ファイルを解決するため
+  // ts 用だけど、とりあえず保留
   resolve: {
-    // Webpackで利用するときの設定
     alias: {
       vue$: "vue/dist/vue.esm.js"
     },
-    extensions: ["*", ".js", ".vue", ".json"]
+    extensions: [".ts", ".tsx", ".vue", ".js", ".jsx", ".json"],
   },
   // optimization: {
   //   minimizer: [new OptimizeCSSAssetsPlugin({})],
