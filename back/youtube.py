@@ -2,7 +2,8 @@
 import time
 import requests
 import json
-
+import datetime
+import dateutil.parser
 #事前に取得したYouTube API key
 YT_API_KEY = "AIzaSyBon4UXyQD_Tf5vsQfEkRyLYn8yZz6lGJE"
 
@@ -46,23 +47,35 @@ def get_chat(chat_id, pageToken, log_file):
         params['pageToken'] = pageToken
 
     data   = requests.get(url, params=params).json()
+    if len( data['items']) >0:
+        try:
+            for item in data['items']:
 
-    try:
-        for item in data['items']:
-            channelId = item['snippet']['authorChannelId']
-            msg       = item['snippet']['displayMessage']
-            #usr       = item['authorDetails']['displayName']#コメント主名
-            #supChat   = item['snippet']['superChatDetails']#スパチャ
-            #supStic   = item['snippet']['superStickerDetails']
-            log_text  = msg
-            with open(log_file, 'a') as f:
-                print(log_text, file=f)
-                print(log_text)
-        print('start : ', data['items'][0]['snippet']['publishedAt'])
-        print('end   : ', data['items'][-1]['snippet']['publishedAt'])
+                channelId = item['snippet']['authorChannelId']
+                msg       = item['snippet']['displayMessage']
+                #usr       = item['authorDetails']['displayName']#コメント主名
+                #supChat   = item['snippet']['superChatDetails']#スパチャ
+                #supStic   = item['snippet']['superStickerDetails']
+                log_text  = '#'+msg
+                with open(log_file, 'a') as f:
+                    print(log_text, file=f)
+                    print(log_text)
 
-    except:
-        pass
+            JST = datetime.timezone(datetime.timedelta(hours=+9), 'JST')#ISO表記のUTCー＞JSTへ
+
+
+
+            start = data['items'][0]['snippet']['publishedAt']
+            start = dateutil.parser.parse(start).astimezone(JST)
+            start= "{0:%Y-%m-%d %H:%M:%S}".format(start)
+            end=data['items'][-1]['snippet']['publishedAt']
+            end = dateutil.parser.parse(end).astimezone(JST)
+            end= "{0:%Y-%m-%d %H:%M:%S}".format(end)
+            print('start : ',start)
+            print('end   : ', end)
+
+        except Exception as e:
+            print(e+"err!")
 
     return data['nextPageToken']
 
@@ -70,7 +83,7 @@ def get_chat(chat_id, pageToken, log_file):
 
 
 def main(yt_url):
-    slp_time        = 10 #sec
+    slp_time        = 2 #sec
     iter_times      = 2 #回
     take_time       = slp_time / 60 * iter_times
     print('{}分後　終了予定'.format(take_time))
