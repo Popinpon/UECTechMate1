@@ -1,13 +1,13 @@
 import tweepy
+import requests
+import json
 import setting
 
 
 class Listener(tweepy.StreamListener):
     def on_status(self, status):
-        status.text()
-        # print('--------------------------------')
-        # print(status.text)
-        # print("")
+        response = requests.post(
+            'http://127.0.0.1:5000/twitter_data', json.dumps({'text': status.text}), headers={'Content-Type': 'application/json'})
         return True
 
     def on_error(self, status_code):
@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     listener = Listener()
     stream = tweepy.Stream(auth, listener)
-    stream.filter(track=['#技育祭', '#Room'])
+    stream.filter(track=['#金曜ロードSHOW'])
 
     # api = tweepy.API(auth, wait_on_rate_limit=True)
 

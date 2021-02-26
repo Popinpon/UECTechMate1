@@ -18,7 +18,8 @@ def get_youtube_data():
 
 @app.route('/twitter_data', methods=["POST"])
 def get_twitter_data():
-    return jsonify({"twitter_data": "いい感じのデータ: " + request.form["test_post_data"]})
+    data = request.json['text']
+    return jsonify({"test_index_data": data})
 
 
 @app.route('/', defaults={'path': ''})
