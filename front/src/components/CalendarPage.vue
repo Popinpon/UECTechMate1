@@ -7,7 +7,7 @@
         <div class="h-8"></div>
       </div>
     </div>
-    <div class="bg-blue-200 w-3/4">
+    <div v-for="i in 3" v-bind:key="i" class="bg-blue-200 w-3/4">
       <p>For a guide and recipes on how to configure / customize this project</p>
     </div>
   </div>
