@@ -8,7 +8,7 @@
       </div>
     </div>
     <div v-for="i in 3" v-bind:key="i" class="bg-blue-200 w-1/4">
-      <p>For a guide and recipes on how to configure / customize this project</p>
+      <Card v-bind="testCardData"/>
     </div>
   </div>
 </template>
@@ -19,6 +19,16 @@ import Card from './Card.vue'
 
 export default Vue.extend({
   name: 'CalendarPage',
+  data() {
+    return {
+      testCardData: {
+        name: "Massann",
+        job: "UEC1721",
+        text: "セブンの焼きサバ食べたい",
+        image: "static/img/pro.jpg"
+      }
+    }
+  },
   components: {
     Card,
   }
