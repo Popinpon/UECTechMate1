@@ -13,12 +13,12 @@ def get_test_data():
 
 @app.route('/youtube_data', methods=["POST"])
 def get_youtube_data():
-    pass
+    return jsonify({"youtube_data": "いい感じのデータ: " + request.form["test_post_data"]})
 
 
 @app.route('/twitter_data', methods=["POST"])
 def get_twitter_data():
-    pass
+    return jsonify({"twitter_data": "いい感じのデータ: " + request.form["test_post_data"]})
 
 
 @app.route('/', defaults={'path': ''})
