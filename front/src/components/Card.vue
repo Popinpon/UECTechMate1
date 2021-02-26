@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+  <div class="h-40 max-w-sm bg-white border-2 border-gray-300 p-4 rounded-md tracking-wide shadow-lg">
     <div id="header" class="flex items-center mb-4">
       <img class="w-20 rounded-full border-2 border-gray-300" alt="image" :src="image">
       <div id="header-text" class="leading-5 ml-6 sm">
