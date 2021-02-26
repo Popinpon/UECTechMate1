@@ -15,7 +15,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Card from './Card.vue'
+
 export default Vue.extend({
   name: 'CalendarPage',
+  components: {
+    Card,
+  }
 })
 </script>

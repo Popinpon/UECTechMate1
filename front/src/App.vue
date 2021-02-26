@@ -17,7 +17,6 @@ export default Vue.extend({
   name: 'App',
   components: {
     CalendarPage,
-    // Hallo
   }
 })
 </script>
