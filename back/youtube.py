@@ -90,9 +90,7 @@ def main(yt_url):
     print('{}分後　終了予定'.format(take_time))
     print('work on {}'.format(yt_url))
 
-    log_file = yt_url.replace('https://www.youtube.com/watch?v=', '') + '.txt'
-    with open(log_file, 'a') as f:
-        print('{} のチャット欄を記録します。'.format(yt_url), file=f)
+#    log_file = yt_url.replace('https://www.youtube.com/watch?v=', '') + '.txt'
     chat_id = get_chat_id(yt_url)
     nextPageToken = None
     for ii in range(iter_times):
