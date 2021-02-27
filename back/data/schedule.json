@@ -1,71 +1,77 @@
 {
     "first_day": {
-        "all_holl": {
-            "0": {
+        "all_holl": [
+            {
                 "time": "11:00",
                 "title": "【プレコンテンツ】学生ライトニングトーク（DAY1）",
                 "text": "学生の皆さんに自由にLTしていただけます。詳細/申込方法は別途共有いたします"
             },
-            "1": {
+            {
                 "time": "12:00",
                 "title": "【プレコンテンツ】ランチ企業交流会",
                 "text": "スポンサー企業との交流タイムです。詳細/申込方法は別途共有いたします"
             },
-            "2": {
+            {
                 "time": "13:10",
                 "title": "【DAY1オープニング】技育祭にご参加する皆さんへ",
                 "text": "主催のサポーターズ代表代表より、技育祭の実施背景や想いなどをお話させていただきます"
             }
-        },
-        "divided_holl": {
-            "A": {
-                "0": {
+        ],
+        "separate_holl": {
+            "A": [
+                {
                     "time_start": "13:30",
                     "time_end": "14:30",
-                    "title": "これからの社会の変化と若者に求められるあり方とは",
+                    "text": "これからの社会の変化と若者に求められるあり方とは",
                     "job": "東京大学大学院工学系研究科 教授",
-                    "name": "松尾 豊"
+                    "name": "松尾 豊",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/ymatsuo.jpg"
                 },
-                "1": {
+                {
                     "time_start": "13:30",
                     "time_end": "14:30",
-                    "title": "活躍するエンジニアに共通する7つの特徴",
+                    "text": "活躍するエンジニアに共通する7つの特徴",
                     "job": "株式会社ディー・エヌ・エー常務執行役員CTO",
-                    "name": "小林 篤"
+                    "name": "小林 篤",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/nekokak.jpg"
                 }
-            },
-            "B": {
-                "0": {
+            ],
+            "B": [
+                {
                     "time_start": "13:30",
                     "time_end": "14:30",
-                    "title": "「オタ駆動開発」で夢を叶える〜煩悩のためにプログラミングを学んだ腐女子のキャリア〜",
+                    "text": "「オタ駆動開発」で夢を叶える〜煩悩のためにプログラミングを学んだ腐女子のキャリア〜",
                     "job": "MicrosoftCloud Developer Advocate",
-                    "name": "千代田 まどか(ちょまど)"
+                    "name": "千代田 まどか(ちょまど)",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/chomado.jpg"
                 },
-                "1": {
+                {
                     "time_start": "13:30",
                     "time_end": "14:30",
-                    "title": "難攻不落の未踏峰に挑む〜デジタルでアジャイルな銀行をゼロから作れ〜",
+                    "text": "難攻不落の未踏峰に挑む〜デジタルでアジャイルな銀行をゼロから作れ〜",
                     "job": "アクセンチュア株式会社テクノロジー コンサルティング本部マネジング・ディレクター",
-                    "name": "水上 廣敏"
+                    "name": "水上 廣敏",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/mizukami.jpg"
                 }
-            },
-            "C": {
-                "0": {
+            ],
+            "C": [
+                {
                     "time_start": "13:30",
                     "time_end": "14:30",
-                    "title": "高専エンジニアの学生起業25年史～起業家という人生の歩み方～",
+                    "text": "高専エンジニアの学生起業25年史～起業家という人生の歩み方～",
                     "job": "さくらインターネット株式会社代表取締役社長",
-                    "name": "田中 邦裕"
+                    "name": "田中 邦裕",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/kunihirotanaka.jpg"
                 },
-                "1": {
+                {
                     "time_start": "13:30",
                     "time_end": "14:30",
-                    "title": "今あえてゲームエンジニアになる理由〜AI、次世代SNS、グローバリゼーションとゲーム業界の関係について〜",
+                    "text": "今あえてゲームエンジニアになる理由〜AI、次世代SNS、グローバリゼーションとゲーム業界の関係について〜",
                     "job": "芸者東京株式会社CEO",
-                    "name": "田中 泰生"
+                    "name": "田中 泰生",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/mochihada.jpg"
                 }
-            }
+            ]
         }
     },
     "second_day": {
