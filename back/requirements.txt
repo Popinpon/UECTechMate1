@@ -1,0 +1,7 @@
+tweepy
+gevent
+gevent-websocket
+Flask
+requests
+websocket
+dotenv

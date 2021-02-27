@@ -1,25 +1,13 @@
 from flask import Flask, render_template, request, jsonify
+from gevent.pywsgi import WSGIServer
+from geventwebsocket.handler import WebSocketHandler
 import os
-
+import json
+import time
+import datetime
 
 app = Flask(__name__, static_folder='../dist/static',
             template_folder='../dist')
-
-
-@app.route('/get_test_data', methods=["POST"])
-def get_test_data():
-    return jsonify({"test_index_data": "いい感じのデータ: " + request.form["test_post_data"]})
-
-
-@app.route('/youtube_data', methods=["POST"])
-def get_youtube_data():
-    return jsonify({"youtube_data": "youtube のいい感じのデータ: " + request.form["test_post_data"]})
-
-
-@app.route('/twitter_data', methods=["POST"])
-def get_twitter_data():
-    data = request.json['text']
-    return jsonify({"test_index_data": data})
 
 
 @app.route('/', defaults={'path': ''})
