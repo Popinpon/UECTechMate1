@@ -51,9 +51,10 @@ def get_chat(chat_id, pageToken, log_file):
                 channelId = item['snippet']['authorChannelId']
                 msg = item['snippet']['displayMessage']
                 usr       = item['authorDetails']['displayName']#コメント主名
+                icon = item['authorDetails']['profileImageUrl']
                 # supChat   = item['snippet']['superChatDetails']#スパチャ
                 #supStic   = item['snippet']['superStickerDetails']
-                msg += '#'
+
                 # with open(log_file, 'a') as f:
                 #     print(log_text, file=f)
                 #     print(log_text)
@@ -65,7 +66,8 @@ def get_chat(chat_id, pageToken, log_file):
                 at = "{0:%Y-%m-%d %H:%M:%S}".format(at)
                 print("test")
                 ws = create_connection("ws://localhost:5001")
-                jmsg=json.dumps({'type': 'youtube', 'id':" ",'user':usr ,'user_id':channelId , 'created_at': str(at), 'text': msg})
+                jmsg=json.dumps({'type': 'youtube', 'id':" ",\
+                'user':usr ,'user_id':channelId , 'created_at': str(at), 'text': msg,'icon':icon})
 
                 ws.send(jmsg)
                 result = ws.recv()
