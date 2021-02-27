@@ -12,5 +12,7 @@ echo 'Start up twitter server.'
 pipenv run python ./twitter.py &
 # echo 'Start up youtube server.'
 # python ./youtube.py &
+echo 'Start up main server.'
+pipenv run python ./main.py &
 
 wait

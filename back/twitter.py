@@ -10,12 +10,13 @@ logger = logging.getLogger(__name__)
 
 class Listener(tweepy.StreamListener):
     def on_status(self, status):
-        logger.debug('----------------------')
-        logger.debug(str(status)+'\n')
-        ws = create_connection("ws://localhost:5001")
-        ws.send(json.dumps(
-            {'type': 'twitter', 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text}))
+        ws = create_connection(setting.WEBSOCKET_SERVER_URL)
+        data = json.dumps(
+            {'type': 'twitter', 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text})
+        ws.send(data)
+        logger.debug(data+'\n')
         result = ws.recv()
+        logger.debug(str(result)+'\n')
         ws.close()
         return True
 
