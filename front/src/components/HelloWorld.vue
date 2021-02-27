@@ -20,6 +20,8 @@
       <table class="twitter_table">
         <thead>
           <tr>
+            <th>ID</th>
+            <th>DATETIME</th>
             <th>TEXT</th>
           </tr>
         </thead>
