@@ -4,4 +4,4 @@ gevent-websocket
 Flask
 requests
 websocket
-dotenv
+python-dotenv
