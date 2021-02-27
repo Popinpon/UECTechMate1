@@ -1,6 +1,7 @@
 <template>
   <a :href="'https://twitter.com/' + user_id" target="_blank">
-    <div class="h-42 max-w-sm bg-white hover:bg-gray-200 border-2 border-gray-300 p-2 rounded-md tracking-wide shadow-lg">
+    <div class="h-42 max-w-sm bg-white hover:bg-blue-200 border-2 border-gray-300 p-2 rounded-md tracking-wide shadow-lg relative">
+      <img src="/static/img/twitter.png" class="w-5 h-5 absolute top-0 right-0 m-2">
       <div id="header" class="flex items-center mb-2">
         <img class="w-16 rounded-full border-2 border-gray-300" alt="image" :src="icon_url">
         <div id="header-text" class="leading-5 ml-6 sm">

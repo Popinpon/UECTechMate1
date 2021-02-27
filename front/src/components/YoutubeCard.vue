@@ -1,5 +1,6 @@
 <template>
-    <div class="bg-white w-full flex items-center p-2 rounded-xl shadow border">
+    <div class="bg-white max-w-sm flex items-center p-2 rounded-xl shadow border relative">
+      <img src="/static/img/youtube_logo.png" class="h-3 absolute top-0 right-0 m-2">
       <div class="flex items-center space-x-4">
         <img :src="icon" alt="icon" class="w-16 h-16 rounded-full">
       </div>

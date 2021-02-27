@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-purple-200">
-          <div v-for="roomC in roomBData" :key="roomC.id">
+          <div v-for="roomC in roomCData" :key="roomC.id">
             <TwitterCard v-if="roomC.type == 'twitter'" v-bind="roomC"/>
             <YoutubeCard v-else v-bind="roomC"/>
           </div>
