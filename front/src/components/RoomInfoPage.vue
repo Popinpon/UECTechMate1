@@ -1,18 +1,33 @@
 <template>
   <div class="bg-black text-white">
 
-    <p class="text-center font-sans text-7xl mb-9">Zoom View</p>
+    <p class="text-center font-sans text-7xl mb-9">Zoom TimeLine</p>
+
+    <div class="flex justify-between mb-6">
+      <div @click="chamgeImage('left')" class="w-1/5 h-20 rounded-full m-1 p-4 cursor-pointer"
+           :class="{'bg-green-600': leftImage.room === 'A', 'bg-pink-600': leftImage.room === 'B', 'bg-purple-600': leftImage.room === 'C'}">
+        <p class="font-mono text-5xl text-white extrabold text-center">{{"ホール" + leftImage.room}}</p>
+      </div>
+      <div class="w-1/3 h-20 rounded-full m-1 p-4"
+           :class="{'bg-green-600': mainImage.room === 'A', 'bg-pink-600': mainImage.room === 'B', 'bg-purple-600': mainImage.room === 'C'}">
+        <p class="font-mono text-5xl text-white extrabold text-center">{{"ホール" + mainImage.room}}</p>
+      </div>
+      <div @click="chamgeImage('right')" class="w-1/5 h-20 rounded-full m-1 p-4 cursor-pointer"
+           :class="{'bg-green-600': rightImage.room === 'A', 'bg-pink-600': rightImage.room === 'B', 'bg-purple-600': rightImage.room === 'C'}">
+        <p class="font-mono text-5xl text-white extrabold text-center">{{"ホール" + rightImage.room}}</p>
+      </div>
+    </div>
 
     <div class="relative">
-      <div id="leftImage" class="w-3/5 absolute transform -translate-x-3/4">
-        <img src="static\img\zoom_test.png">
+      <div id="leftImage" @click="chamgeImage('left')" class="w-3/5 absolute transform -translate-x-3/4 cursor-pointer">
+        <img :src="leftImage.imageSrc">
       </div>
-      <div id="rightImage" class="w-3/5 absolute transform right-0 translate-x-3/4">
-        <img src="static\img\zoom_test.png">
+      <div id="rightImage" @click="chamgeImage('right')" class="w-3/5 absolute transform right-0 translate-x-3/4 cursor-pointer">
+        <img :src="rightImage.imageSrc">
       </div>
       <div id="mainImage" class="flex justify-center mb-8">
         <div class="w-3/5">
-          <img src="static\img\zoom_test.png">
+          <img :src="mainImage.imageSrc">
         </div>
       </div>
     </div>
@@ -70,6 +85,18 @@ export default Vue.extend({
       roomAData: [],
       roomBData: [],
       roomCData: [],
+      leftImage: {
+        imageSrc: "static/img/zoom_test.png",
+        room: "A",
+      },
+      mainImage: {
+        imageSrc: "static/img/zoom_test.png",
+        room: "B",
+      },
+      rightImage: {
+        imageSrc: "static/img/zoom_test.png",
+        room: "C",
+      },
     };
   },
   components: {
@@ -102,6 +129,17 @@ export default Vue.extend({
         if (list.length >= 10) list.shift();
       }
     },
+    chamgeImage(direction){
+      if(direction == 'right'){
+        const tmp = this.mainImage
+        this.mainImage = this.rightImage
+        this.rightImage = tmp
+      } else {
+        const tmp = this.mainImage
+        this.mainImage = this.leftImage
+        this.leftImage = tmp
+      }
+    }
   },
 });
 </script>
