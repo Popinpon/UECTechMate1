@@ -8,6 +8,7 @@ dotenv_path = join(dirname(__file__)+'.env')
 load_dotenv(dotenv_path)
 
 CSKEY = os.environ.get("consumer_key")
-CSKEY_SEC = os.environ.get("comsumer_secret")
+CSKEY_SEC = os.environ.get("consumer_secret")
 TKNKEY = os.environ.get("access_token_key")
 TKNKEY_SEC = os.environ.get("access_token_secret")
+YT_API_KEY = os.environ.get("youtube_api_key")

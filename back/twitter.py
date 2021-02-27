@@ -3,16 +3,18 @@ import requests
 import json
 import setting
 from websocket import create_connection
+from utils.logConf import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Listener(tweepy.StreamListener):
     def on_status(self, status):
-        print('----------------------')
-        print(status.text)
-        print("")
+        logger.debug('----------------------')
+        logger.debug(str(status)+'\n')
         ws = create_connection("ws://localhost:5001")
         ws.send(json.dumps(
-            {'type': 'twitter', 'id': status.id, 'created_at': str(status.created_at), 'text': status.text}))
+            {'type': 'twitter', 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text}))
         result = ws.recv()
         ws.close()
         return True
@@ -38,15 +40,3 @@ if __name__ == '__main__':
     listener = Listener()
     stream = tweepy.Stream(auth, listener)
     stream.filter(track=['アルセウス'])
-
-    # api = tweepy.API(auth, wait_on_rate_limit=True)
-
-    # data = []
-    # for tweet in tweepy.Cursor(api.search, q='#RoomA', count=10).items():
-    #     tweet_data = [tweet.created_at, tweet.user.id_str, tweet.text]
-    #     data.append(tweet_data)
-
-    # print(data)
-
-    # tweets = api.search(q='#RoomA', lang='ja',
-    #                     result_type='recent', count=10)

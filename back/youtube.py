@@ -4,8 +4,7 @@ import requests
 import json
 import datetime
 import dateutil.parser
-# 事前に取得したYouTube API key
-YT_API_KEY = "AIzaSyBon4UXyQD_Tf5vsQfEkRyLYn8yZz6lGJE"
+import setting
 
 
 def get_chat_id(yt_url):
