@@ -12,7 +12,7 @@
         </thead>
         <transition-group tag="youtube_data">
           <tr v-for="post in youtubeTextData" :key="post.id">
-            <td>{{ post.id }}</td>
+            <td><img :src="post.icon" :alt="icon"></td>
             <td>{{ post.created_at }}</td>
             <td>{{ post.text }}</td>
           </tr>
