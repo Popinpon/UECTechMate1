@@ -32,8 +32,7 @@ def save_img():
     img = Image.open(img)
     img.save(os.path.abspath('../dist/static/img/')+'/Room'+room_type+'.png')
     img_shape = img.size
-    text = dict_data["text"]
-    response = {"text": text, "img_shape": img_shape}
+    response = {"img_shape": img_shape}
     return jsonify(response)
 
 
