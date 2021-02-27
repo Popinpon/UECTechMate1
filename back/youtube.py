@@ -7,12 +7,12 @@ import dateutil.parser
 import setting
 from websocket import create_connection
 
+def get_chat_id(room_type):
 
-def get_chat_id(yt_url):
     '''
     https://developers.google.com/youtube/v3/docs/videos/list?hl=ja
     '''
-    video_id = yt_url.replace('https://www.youtube.com/watch?v=', '')
+    video_id = setting.YT_URL[room_type].replace('https://www.youtube.com/watch?v=', '')
     print('video_id : ', video_id)
 
     url = 'https://www.googleapis.com/youtube/v3/videos'
@@ -34,13 +34,13 @@ def get_chat_id(yt_url):
     return chat_id
 
 
-def get_chat(chat_id, pageToken, log_file):
+def get_chat(room,chat_id, pageToken):
     '''
     https://developers.google.com/youtube/v3/live/docs/liveChatMessages/list
     '''
     url = 'https://www.googleapis.com/youtube/v3/liveChat/messages'
-    params = {'key': setting.YT_API_KEY, 'liveChatId': chat_id,
-              'part': 'id,snippet,authorDetails'}  # コメント主のチャンネル詳細
+
+    params = {'key': setting.YT_API_KEY, 'liveChatId': chat_id,'part': 'id,snippet,authorDetails'} #コメント主のチャンネル詳細
     if type(pageToken) == str:
         params['pageToken'] = pageToken
 
@@ -48,11 +48,11 @@ def get_chat(chat_id, pageToken, log_file):
 
     if len(data['items']) > 0:
         try:
-            for i, item in enumerate(data['items']):
+            for i,item in enumerate(data['items']):
 
                 channelId = item['snippet']['authorChannelId']
                 msg = item['snippet']['displayMessage']
-                usr = item['authorDetails']['displayName']  # コメント主名
+                usr       = item['authorDetails']['displayName']#コメント主名
                 icon = item['authorDetails']['profileImageUrl']
                 # supChat   = item['snippet']['superChatDetails']#スパチャ
                 #supStic   = item['snippet']['superStickerDetails']
@@ -61,20 +61,17 @@ def get_chat(chat_id, pageToken, log_file):
                 #     print(log_text, file=f)
                 #     print(log_text)
 
-                JST = datetime.timezone(datetime.timedelta(
-                    hours=+9), 'JST')  # ISO表記のUTCー＞JSTへ
-                at = data['items'][i]['snippet']['publishedAt']
+                JST = datetime.timezone(datetime.timedelta(hours=+9), 'JST')  # ISO表記のUTCー＞JSTへ
+                at= data['items'][i]['snippet']['publishedAt']
                 at = dateutil.parser.parse(at).astimezone(JST)
                 at = "{0:%Y-%m-%d %H:%M:%S}".format(at)
-                print("test")
+
                 ws = create_connection("ws://localhost:5001")
-                jmsg = json.dumps({'type': 'youtube', 'id': " ",
-                                   'user': usr, 'user_id': channelId, 'created_at': str(at), 'text': msg, 'icon': icon})
+                jmsg=json.dumps({'type': 'youtube','room_type':room, 'id':" ",'user':usr ,'user_id':channelId , 'created_at': str(at), 'text': msg,'icon':icon})
 
                 ws.send(jmsg)
                 result = ws.recv()
                 ws.close()
-
                 print(jmsg)
 
         except Exception as e:
@@ -85,26 +82,29 @@ def get_chat(chat_id, pageToken, log_file):
     return data['nextPageToken']
 
 
-def main(yt_url):
+def main():
     slp_time = 10  # sec
     iter_times = 5  # 回
     take_time = slp_time / 60 * iter_times
-    print('{}分後　終了予定'.format(take_time))
-    print('work on {}'.format(yt_url))
+    room_names=list(setting.YT_URL)
 
+    chat_ids=[]
+    nextPageToken=[]
 #    log_file = yt_url.replace('https://www.youtube.com/watch?v=', '') + '.txt'
-    chat_id = get_chat_id(yt_url)
-    nextPageToken = None
+    for i,room in enumerate(room_names):
+        chat_ids.append(get_chat_id(room))
+        nextPageToken.append(None)
+
     for ii in range(iter_times):
         # for jj in [0]:
-        try:
-            print('\n')
-            nextPageToken = get_chat(chat_id, nextPageToken, log_file)
-            time.sleep(slp_time)
-        except:
-            break
-
+        for i,chat_id in enumerate(chat_ids):
+            try:
+                print('\n')
+                nextPageToken[i] = get_chat(room_names[i],chat_id, nextPageToken[i])
+                time.sleep(slp_time)
+            except Exception as e:
+                print(e)
 
 if __name__ == '__main__':
 
-    main(setting.YT_URL["RoomA"])
+    main()
