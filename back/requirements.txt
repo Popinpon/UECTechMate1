@@ -5,3 +5,4 @@ Flask
 requests
 websocket
 python-dotenv
+pillow

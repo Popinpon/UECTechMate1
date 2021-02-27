@@ -7,17 +7,26 @@ from utils.logConf import logging
 
 logger = logging.getLogger(__name__)
 
+keyword1 = 'アルセウス'
+keyword2 = 'BUMP'
+keyword3 = 'マイヤヒ'
+
+query_keywords = keyword1 + ',' + keyword2 + ',' + keyword3
+
 
 class Listener(tweepy.StreamListener):
     def on_status(self, status):
         ws = create_connection(setting.WEBSOCKET_SERVER_URL)
+        room_type = 'C'
+        if keyword1 in status.text:
+            room_type = 'A'
+        elif keyword2 in status.text:
+            room_type = 'B'
         data = json.dumps(
-            {'type': 'twitter', 'icon_url': status.user.profile_image_url, 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text})
+            {'type': 'twitter', 'room_type': room_type, 'icon_url': status.user.profile_image_url, 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text})
         ws.send(data)
-
         logger.debug(data+'\n')
         result = ws.recv()
-        logger.debug(str(status)+'\n')
         ws.close()
         return True
 
@@ -41,4 +50,4 @@ if __name__ == '__main__':
 
     listener = Listener()
     stream = tweepy.Stream(auth, listener)
-    stream.filter(track=['BUMP'])
+    stream.filter(track=[query_keywords])
