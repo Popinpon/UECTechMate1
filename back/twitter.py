@@ -3,7 +3,7 @@ import requests
 import json
 import setting
 from websocket import create_connection
-import logging
+from utils.logConf import logging
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class Listener(tweepy.StreamListener):
     def on_status(self, status):
         logger.debug('----------------------')
-        logger.debug(status+'\n')
+        logger.debug(str(status)+'\n')
         ws = create_connection("ws://localhost:5001")
         ws.send(json.dumps(
             {'type': 'twitter', 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text}))
