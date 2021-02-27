@@ -1,14 +1,15 @@
 <template>
   <div class="h-40 max-w-sm bg-white border-2 border-gray-300 p-4 rounded-md tracking-wide shadow-lg">
-    <div id="header" class="flex items-center mb-4">
-      <img class="w-20 rounded-full border-2 border-gray-300" alt="image" :src="image">
+    <div id="header" class="flex items-center mb-2">
+      <img v-if="image" class="w-20 rounded-full border-2 border-gray-300" alt="image" :src="image">
+      <img v-else class="w-20 rounded-full border-2 border-gray-300" alt="image" src="/static/img/no_image.jpg">
       <div id="header-text" class="leading-5 ml-6 sm">
         <h4 class="text-xl font-semibold">{{name}}</h4>
-        <h5 class="font-semibold text-blue-600">{{job}}</h5>
+        <h5 class="font-semibold  text-blue-600">{{job}}</h5>
       </div>
     </div>
     <div>
-      <q class="italic text-gray-600">{{text}}</q>
+      <span class="italic text-xs text-gray-800">{{text}}</span>
     </div>
   </div>
 </template>
