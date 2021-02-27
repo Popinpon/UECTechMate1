@@ -1,22 +1,22 @@
 <template>
   <div class="bg-black text-white">
 
-    <!-- <p class="text-center font-sans text-7xl mb-9">Zoom View</p>
+    <p class="text-center font-sans text-7xl mb-9">Zoom View</p>
 
     <div class="relative">
-      <div class="w-3/5 absolute translate-x-3/4">
+      <div id="leftImage" class="w-3/5 absolute transform -translate-x-3/4">
         <img src="static\img\zoom_test.png">
       </div>
-      <div class="flex justify-center">
+      <div id="rightImage" class="w-3/5 absolute transform right-0 translate-x-3/4">
+        <img src="static\img\zoom_test.png">
+      </div>
+      <div id="mainImage" class="flex justify-center mb-8">
         <div class="w-3/5">
           <img src="static\img\zoom_test.png">
         </div>
       </div>
-      <div class="w-3/5 absolute -translate-x-3/4">
-        <img src="static\img\zoom_test.png">
-      </div>
     </div>
- -->
+
     <p class="text-center font-sans text-7xl mb-9">Responce</p>
     <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
