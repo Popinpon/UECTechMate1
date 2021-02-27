@@ -130,9 +130,282 @@
         ]
     },
     "second_day": {
-        
+        "all_holl": [
+            {
+                "time": 60,
+                "title": "【プレコンテンツ】学生ライトニングトーク（DAY2）",
+                "text": "学生の皆さんに自由にLTしていただけます。詳細/申込方法は別途共有いたします"
+            },
+            {
+                "time": 70,
+                "title": "【プレコンテンツ】ランチ企業交流会",
+                "text": "スポンサー企業との交流タイムです。詳細/申込方法は別途共有いたします"
+            },
+            {
+                "time": 20,
+                "title": "【DAY2オープニング】平井大臣特別インタビュー",
+                "text": "主催のサポーターズ代表代表より、技育祭の実施背景や想いなどをお話させていただきます"
+            }
+        ],
+        "separate_holl": {
+            "A": [
+                {
+                    "time_start": "13:30",
+                    "time_end": "14:30",
+                    "text": "テーマ未定",
+                    "job": "株式会社FIXER代表取締役社長",
+                    "name": "松岡 清一",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/matsuoka.jpg"
+                },
+                {
+                    "time_start": "14:40",
+                    "time_end": "15:40",
+                    "text": "〜ハイクラス人材向けサービスを運営するビズリーチのCTOが語る〜「市場価値の高いエンジニア」ってどんなエンジニア？",
+                    "job": "株式会社ビズリーチ（Visionalグループ）執行役員/CTO",
+                    "name": "外山英幸",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/toyama.jpg"
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "超就活術〜つよつよエンジニアになる為の５つの絶対原則〜",
+                    "job": "株式会社ゆめみ代表取締役",
+                    "name": "片岡俊行",
+                    "image": ""
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "［1部］今求められる21世紀型エンジニアに必要なこと［2部］大好評につき今年も開催！若手6人のぶっちゃけトーク",
+                    "job": "株式会社サイバーエージェント技術担当 常務執行役員",
+                    "name": "長瀬 慶重",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/lionbaby.jpg"
+                }
+            ],
+            "B": [
+                {
+                    "time_start": "13:30",
+                    "time_end": "14:30",
+                    "text": "無駄なものをつくって稼ぐ方法",
+                    "job": "無駄づくり発明家コンテンツクリエイター",
+                    "name": "藤原 麻里菜",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/togenkyoo.jpg"
+                },
+                {
+                    "time_start": "14:40",
+                    "time_end": "15:40",
+                    "text": "Goライブコーディング2021",
+                    "job": "株式会社fluct CTO / 株式会社VOYAGE GROUP(CARTA HOLDINGS)みんなのGo言語共著者",
+                    "name": "鈴木健太",
+                    "image": ""
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "これから必要とされるエンジニアになるために、知っておくべきこと",
+                    "job": "パーソルキャリア株式会社サービス開発統括部エグゼクティブマネジャー",
+                    "name": "岡本 邦宏",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/okamoto.jpg"
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "プログラム未経験から一人前のエンジニアとして活躍できるために学生のうちにやっておくべきこと",
+                    "job": "CROOZ株式会社 執行役員最高技術責任者/CTOCROOZ SHOPLIST株式会社 技術統括部長",
+                    "name": "鈴木 優一",
+                    "image": ""
+                }
+            ],
+            "C": [
+                {
+                    "time_start": "13:30",
+                    "time_end": "14:30",
+                    "text": "新技術への向き合い方～幸せなエンジニアライフを送るための4箇条～",
+                    "job": "株式会社マネーフォワード取締役執行役員 CTO",
+                    "name": "中出 匠哉",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/nakade.jpg"
+                },
+                {
+                    "time_start": "14:40",
+                    "time_end": "15:40",
+                    "text": "調整中",
+                    "job": "",
+                    "name": "",
+                    "image": ""
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "CTOと一緒におしゃべりしましょう！〜ミク談出張版〜テーマ：エンジニアのモノ作り、活躍、評価について",
+                    "job": "株式会社ミクシィ 取締役CTO",
+                    "name": "村瀬 龍馬",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/tatsuma_mu.jpg"
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "調整中",
+                    "job": "",
+                    "name": "",
+                    "image": ""
+                }
+            ]
+        },
+        "gathering": [
+            {
+                "time": "18:00",
+                "title": "【懇親会】DAY2おつかれさまパーティー",
+                "text": "登壇者、スポンサー企業、学生さん誰でも参加可能なパーティーです。詳細/申込方法は別途共有いたします"
+            }
+        ]
     },
     "third_day": {
-        
+        "all_holl": [
+            {
+                "time": 60,
+                "title": " スポンサーライトニングトークセッション",
+                "text": "シルバースポンサーによるLT。詳細は別途共有いたします"
+            },
+            {
+                "time": 20,
+                "title": "DAY3 スペシャルコンテンツ",
+                "text": "コンテンツは当日までのお楽しみ！！"
+            }
+        ],
+        "separate_holl": {
+            "A": [
+                {
+                    "time_start": "11:00",
+                    "time_end": "12:00",
+                    "text": "日本のけしからん行政系機関や大企業でけしからんサイバー技術開発を行なうことについて",
+                    "job": "IPA サイバー技術研究室長NTT東日本 特殊局員",
+                    "name": "登 大遊",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/dnobori.jpg"
+                },
+                {
+                    "time_start": "13:30",
+                    "time_end": "14:30",
+                    "text": "CTOが語る、学生が個人開発でイケてる成果物を作るコツ",
+                    "job": "株式会社VOYAGE GROUP(CARTA HOLDINGS) 取締役CTO日本CTO協会 理事",
+                    "name": "小賀 昌法",
+                    "image": ""
+                },
+                {
+                    "time_start": "14:40",
+                    "time_end": "15:40",
+                    "text": "2年で3億7000万人に遊ばれるスマホゲームの作り方",
+                    "job": "芸者東京株式会社CEO",
+                    "name": "田中 泰生",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/mochihada.jpg"
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "技術書執筆のススメ〜Only1なエンジニアになるためのセルフブランディング〜",
+                    "job": "フューチャー株式会社シニアアーキテクト",
+                    "name": "澁川喜規",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/shibu_jp.jpg"
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "ひろゆきだけど何か質問ある？",
+                    "job": "元2ちゃんねる管理人",
+                    "name": "ひろゆき",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/hirox246.jpg"
+                }
+            ],
+            "B": [
+                {
+                    "time_start": "11:00",
+                    "time_end": "12:00",
+                    "text": "スーパーコンピュータ富岳による10万ノード級のAIとSociety5.0へのインパクト",
+                    "job": "理化学研究所 計算科学研究センターセンター長 東京工業大学 特任教授",
+                    "name": "松岡 聡",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/matsuoka.jpg"
+                },
+                {
+                    "time_start": "13:30",
+                    "time_end": "14:30",
+                    "text": "これからのエンジニア／これからのDMM",
+                    "job": "合同会社DMM.comVPoE",
+                    "name": "大久保 寛",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/okubo.jpg"
+                },
+                {
+                    "time_start": "14:40",
+                    "time_end": "15:40",
+                    "text": "ただプログラマでありたい～夢中になれるプログラミングの楽しみ方～",
+                    "job": "GMOインターネット株式会社デベロッパーエバンジェリスト",
+                    "name": "成瀬 允宣",
+                    "image": ""
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "テーマ未定",
+                    "job": "株式会社ゆめみ取締役",
+                    "name": "桑原聖仁 ",
+                    "image": ""
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "プログラミング以外にも重要なこと〜モノづくりキャリアの歩み方〜",
+                    "job": "サイカCTO, 時空テクノロジーズCEO, マクアケCTO",
+                    "name": "是澤 太志, 橋本 善久, 生内 洋平",
+                    "image": ""
+                }
+            ],
+            "C": [
+                {
+                    "time_start": "11:00",
+                    "time_end": "12:00",
+                    "text": "調整中",
+                    "job": "",
+                    "name": "",
+                    "image": ""
+                },
+                {
+                    "time_start": "13:30",
+                    "time_end": "14:30",
+                    "text": "調整中",
+                    "job": "",
+                    "name": "",
+                    "image": ""
+                },
+                {
+                    "time_start": "14:40",
+                    "time_end": "15:40",
+                    "text": "テーマ未定",
+                    "job": "株式会社LIFULL CTO",
+                    "name": "長沢 翼",
+                    "image": ""
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "これからの時代に必要な技術力とは",
+                    "job": "freee株式会社CTO/共同創業者",
+                    "name": "横路 隆",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/yokoji.jpg"
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "調整中",
+                    "job": "",
+                    "name": "",
+                    "image": ""
+                }
+            ]
+        },
+        "gathering": [
+            {
+                "time": "18:00",
+                "title": "【懇親会】DAY3おつかれさまパーティー",
+                "text": "登壇者、スポンサー企業、学生さん誰でも参加可能なパーティーです。詳細/申込方法は別途共有いたします"
+            }
+        ]
     }
 }

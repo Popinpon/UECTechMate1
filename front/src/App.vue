@@ -19,8 +19,8 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center">
-      <img alt="Vue logo" src="static/img/logo.png">
+    <div class="flex justify-center bg-black">
+      <img alt="Vue logo" src="static/img/logo_geek.png">
     </div>
     <CalendarPage v-if="isCalendar"/>
     <Hallo v-else/>

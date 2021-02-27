@@ -1,6 +1,34 @@
 <template>
+<div class="bg-black">
+  <div>
+    <nav class="flex flex-col sm:flex-row justify-center mb-4">
+        <button
+          class="text-gray-600 text-3xl py-4 px-6 block hover:text-blue-500 focus:outline-none"
+          :class="{'text-blue-500 border-b-2 font-medium border-blue-500': dayNum === 1}"
+          @click="dayNum = 1"
+          :disabled="dayNum === 1"
+          >
+            Day 1
+        </button>
+        <button
+          class="text-gray-600 text-3xl py-4 px-6 block hover:text-blue-500 focus:outline-none"
+          :class="{'text-blue-500 border-b-2 font-medium border-blue-500': dayNum === 2}"
+          @click="dayNum = 2"
+          :disabled="dayNum === 2"
+          >
+            Day 2
+        </button><button
+          class="text-gray-600 text-3xl py-4 px-6 block hover:text-blue-500 focus:outline-none"
+          :class="{'text-blue-500 border-b-2 font-medium border-blue-500': dayNum === 3}"
+          @click="dayNum = 3"
+          :disabled="dayNum === 3"
+          >
+            Day 3
+        </button>
+      </nav>
+  </div>
   <div class="flex justify-center">
-    <div id="times" class="bg-blue-100 w-1/12">
+    <div id="times" class="bg-blue-100 w-1/12 rounded-tl-md">
       <div class="h-20 bg-blue-900 text-white rounded-tl-md"></div>
       <div v-for="i in 8" v-bind:key="i" class="h-40 border-b-2 border-blue-500">
         <div class="h-16"></div>
@@ -9,7 +37,7 @@
       </div>
     </div>
     <template v-show="!isLoading && schedule">
-      <div id="mainCards" class="bg-blue-200 w-3/4">
+      <div id="mainCards" class="bg-blue-200 w-3/4 rounded-tr-md">
         <div id="cards" class="flex justify-center">
           <div class="h-20 w-1/3 bg-green-600 p-4">
             <p class="font-mono text-5xl text-white extrabold text-center">ホールA</p>
@@ -21,22 +49,67 @@
             <p class="font-mono text-5xl text-white extrabold text-center">ホールC</p>
           </div>
         </div>
-        <div id="wideCard" class="w-full">
-          <div v-for="data in schedule.first_day.all_holl" :key="data">
-            <WideCard v-bind="data"/>
-          </div>
-        </div>
-        <div id="cards" class="flex justify-center">
-          <div v-for="holl in schedule.first_day.separate_holl" :key="holl" class="w-1/3">
-            <div v-for="data in holl" :key="data" v-bind="data">
-              <Card v-bind="data"/>
-              <div class="h-7"></div>
+
+        <template v-if="dayNum === 1">
+          <div id="wideCard" class="w-full">
+            <div v-for="data in schedule.first_day.all_holl" :key="data">
+              <WideCard v-bind="data"/>
             </div>
           </div>
-        </div>
+          <div id="cards" class="flex justify-center">
+            <div v-for="holl in schedule.first_day.separate_holl" :key="holl" class="w-1/3">
+              <div v-for="data in holl" :key="data" v-bind="data">
+                <Card v-bind="data"/>
+                <div class="h-7"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template v-else-if="dayNum === 2">
+          <div id="wideCard" class="w-full">
+            <div v-for="data in schedule.second_day.all_holl" :key="data">
+              <WideCard v-bind="data"/>
+              </div>
+          </div>
+          <div id="cards" class="flex justify-center">
+            <div v-for="holl in schedule.second_day.separate_holl" :key="holl" class="w-1/3">
+              <div v-for="data in holl" :key="data" v-bind="data">
+                <Card v-bind="data"/>
+                <div class="h-7"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template v-else>
+          <div id="cards" class="flex justify-center">
+            <div v-for="holl in schedule.third_day.separate_holl" :key="holl" class="w-1/3">
+              <div v-for="data in holl" :key="data" v-bind="data">
+                <Card v-if="data.time_start === '11:00'" v-bind="data"/>
+                <div v-if="data.time_start === '11:00'" class="h-7"></div>
+              </div>
+            </div>
+          </div>
+          <div id="wideCard" class="w-full">
+            <div v-for="data in schedule.third_day.all_holl" :key="data">
+              <WideCard v-bind="data"/>
+            </div>
+          </div>
+          <div id="cards" class="flex justify-center">
+            <div v-for="holl in schedule.third_day.separate_holl" :key="holl" class="w-1/3">
+              <div v-for="data in holl" :key="data" v-bind="data">
+                <Card v-if="data.time_start !== '11:00'" v-bind="data"/>
+                <div v-if="data.time_start !== '11:00'" class="h-7"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+
       </div>
     </template>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -61,6 +134,7 @@ export default Vue.extend({
         "third_day": {},
       },
       isLoading: true,
+      dayNum: 1,
     }
   },
   components: {
