@@ -1,6 +1,7 @@
 <template>
   <div class="flex justify-center">
     <div id="times" class="bg-blue-100 w-1/12">
+      <div class="h-20 bg-blue-900 text-white rounded-tl-md"></div>
       <div v-for="i in 8" v-bind:key="i" class="h-40 border-b-2 border-blue-500">
         <div class="h-16"></div>
         <p class="text-2xl text-center">{{i + 10}}</p>
@@ -9,6 +10,17 @@
     </div>
     <template v-show="!isLoading && schedule">
       <div id="mainCards" class="bg-blue-200 w-3/4">
+        <div id="cards" class="flex justify-center">
+          <div class="h-20 w-1/3 bg-green-600 p-4">
+            <p class="font-mono text-5xl text-white extrabold text-center">ホールA</p>
+          </div>
+          <div class="h-20 w-1/3 bg-pink-600 p-4">
+            <p class="font-mono text-5xl text-white extrabold text-center">ホールB</p>
+          </div>
+          <div class="h-20 w-1/3 bg-purple-600 p-4 rounded-tr-md">
+            <p class="font-mono text-5xl text-white extrabold text-center">ホールC</p>
+          </div>
+        </div>
         <div id="wideCard" class="w-full">
           <div v-for="data in schedule.first_day.all_holl" :key="data">
             <WideCard v-bind="data"/>
@@ -16,7 +28,10 @@
         </div>
         <div id="cards" class="flex justify-center">
           <div v-for="holl in schedule.first_day.separate_holl" :key="holl" class="w-1/3">
-            <Card v-for="data in holl" :key="data" v-bind="data"/>
+            <div v-for="data in holl" :key="data" v-bind="data">
+              <Card v-bind="data"/>
+              <div class="h-7"></div>
+            </div>
           </div>
         </div>
       </div>

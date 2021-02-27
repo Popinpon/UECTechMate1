@@ -2,17 +2,17 @@
     "first_day": {
         "all_holl": [
             {
-                "time": "11:00",
+                "time": 60,
                 "title": "【プレコンテンツ】学生ライトニングトーク（DAY1）",
                 "text": "学生の皆さんに自由にLTしていただけます。詳細/申込方法は別途共有いたします"
             },
             {
-                "time": "12:00",
+                "time": 70,
                 "title": "【プレコンテンツ】ランチ企業交流会",
                 "text": "スポンサー企業との交流タイムです。詳細/申込方法は別途共有いたします"
             },
             {
-                "time": "13:10",
+                "time": 20,
                 "title": "【DAY1オープニング】技育祭にご参加する皆さんへ",
                 "text": "主催のサポーターズ代表代表より、技育祭の実施背景や想いなどをお話させていただきます"
             }
@@ -28,12 +28,28 @@
                     "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/ymatsuo.jpg"
                 },
                 {
-                    "time_start": "13:30",
-                    "time_end": "14:30",
+                    "time_start": "14:40",
+                    "time_end": "15:40",
                     "text": "活躍するエンジニアに共通する7つの特徴",
                     "job": "株式会社ディー・エヌ・エー常務執行役員CTO",
                     "name": "小林 篤",
                     "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/nekokak.jpg"
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "Matzに聞きたい100のこと〜Rubyの父に聞く、エンジニアのキャリアとスキル〜",
+                    "job": "Ruby開発者",
+                    "name": "まつもと ゆきひろ",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/yukihiro_matz.jpg"
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "エンジニアとしてどう生きていくか〜20年の技術変遷から考える生存戦略〜",
+                    "job": "グリー株式会社 取締役上級執行役員 最高技術責任者",
+                    "name": "藤本 真樹",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/masaki_fujimoto.jpg"
                 }
             ],
             "B": [
@@ -46,12 +62,28 @@
                     "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/chomado.jpg"
                 },
                 {
-                    "time_start": "13:30",
-                    "time_end": "14:30",
+                    "time_start": "14:40",
+                    "time_end": "15:40",
                     "text": "難攻不落の未踏峰に挑む〜デジタルでアジャイルな銀行をゼロから作れ〜",
                     "job": "アクセンチュア株式会社テクノロジー コンサルティング本部マネジング・ディレクター",
                     "name": "水上 廣敏",
                     "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/mizukami.jpg"
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "RedCoderのライブ競プロ～競プロ世界ランカーのアルゴリズム改善～",
+                    "job": "AtCoder株式会社 代表取締役社長",
+                    "name": "高橋 直大（chokudai）",
+                    "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/chokudai.jpg"
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "競プロスキルでビジネス無双〜誰もやらないのでエンジニアだけど営業から研究開発まで全部やります〜",
+                    "job": "フューチャー株式会社最適化スペシャリスト",
+                    "name": "塚本 祥太",
+                    "image": ""
                 }
             ],
             "C": [
@@ -64,15 +96,38 @@
                     "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/kunihirotanaka.jpg"
                 },
                 {
-                    "time_start": "13:30",
-                    "time_end": "14:30",
+                    "time_start": "14:40",
+                    "time_end": "15:40",
                     "text": "今あえてゲームエンジニアになる理由〜AI、次世代SNS、グローバリゼーションとゲーム業界の関係について〜",
                     "job": "芸者東京株式会社CEO",
                     "name": "田中 泰生",
                     "image": "https://talent.supporterz.jp/geeksai/2021/img/guests/mochihada.jpg"
+                },
+                {
+                    "time_start": "15:50",
+                    "time_end": "16:50",
+                    "text": "調整中",
+                    "job": "",
+                    "name": "",
+                    "image": ""
+                },
+                {
+                    "time_start": "17:00",
+                    "time_end": "18:00",
+                    "text": "【AbemaTV CTOが学生向けに初登壇！】開局後5年のABEMAの裏側に広がるエンジニアリングの世界",
+                    "job": "株式会社AbemaTV CTO",
+                    "name": "西尾 亮太",
+                    "image": ""
                 }
             ]
-        }
+        },
+        "gathering": [
+            {
+                "time": "18:00",
+                "title": "【懇親会】DAY1おつかれさまパーティー",
+                "text": "登壇者、スポンサー企業、学生さん誰でも参加可能なパーティーです。詳細/申込方法は別途共有いたします"
+            }
+        ]
     },
     "second_day": {
         
