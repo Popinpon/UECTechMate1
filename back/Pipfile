@@ -10,6 +10,8 @@ gevent-websocket = "*"
 requests = "*"
 websocket = "*"
 Flask = "*"
+python-dotenv = "*"
+websocket-client = "*"
 
 [dev-packages]
 

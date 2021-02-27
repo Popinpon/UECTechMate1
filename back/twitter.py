@@ -38,15 +38,3 @@ if __name__ == '__main__':
     listener = Listener()
     stream = tweepy.Stream(auth, listener)
     stream.filter(track=['アルセウス'])
-
-    # api = tweepy.API(auth, wait_on_rate_limit=True)
-
-    # data = []
-    # for tweet in tweepy.Cursor(api.search, q='#RoomA', count=10).items():
-    #     tweet_data = [tweet.created_at, tweet.user.id_str, tweet.text]
-    #     data.append(tweet_data)
-
-    # print(data)
-
-    # tweets = api.search(q='#RoomA', lang='ja',
-    #                     result_type='recent', count=10)
