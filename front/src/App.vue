@@ -23,13 +23,13 @@
       <img alt="Vue logo" src="static/img/logo_geek.png">
     </div>
     <CalendarPage v-if="isCalendar"/>
-    <Hallo v-else/>
+    <RoomInfoPage v-else/>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Hallo from './components/HelloWorld.vue'
+import RoomInfoPage from './components/RoomInfoPage.vue'
 import CalendarPage from './components/CalendarPage.vue'
 
 export default Vue.extend({
@@ -40,7 +40,7 @@ export default Vue.extend({
     }
   },
   components: {
-    Hallo,
+    RoomInfoPage,
     CalendarPage,
   },
   methods: {
