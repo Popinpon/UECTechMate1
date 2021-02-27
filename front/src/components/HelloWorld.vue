@@ -8,22 +8,9 @@
     </div>
     <div class="bg-pink-900 text-white">
       <h3>Twtter Responce</h3>
-      <table class="twitter_table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>DATETIME</th>
-            <th>TEXT</th>
-          </tr>
-        </thead>
-        <transition-group tag="twitter_data">
-          <tr v-for="post in twitterTextData" :key="post.id">
-            <td>{{ post.id }}</td>
-            <td>{{ post.created_at }}</td>
-            <td>{{ post.text }}</td>
-          </tr>
-        </transition-group>
-      </table>
+      <div v-for="post in twitterTextData" :key="post.id">
+        <TwitterCard v-bind="post"/>
+      </div>
     </div>
   </div>
 </template>
@@ -31,6 +18,7 @@
 <script lang="ts">
 import Vue from "vue";
 import YoutubeCard from "./YoutubeCard.vue"
+import TwitterCard from "./TwitterCard.vue"
 
 export default Vue.extend({
   name: "HelloWorld",
@@ -43,6 +31,7 @@ export default Vue.extend({
   },
   components: {
     YoutubeCard,
+    TwitterCard,
   },
   mounted() {
     const socket = new WebSocket("ws://localhost:5001");

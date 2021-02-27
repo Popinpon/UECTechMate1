@@ -12,7 +12,7 @@ class Listener(tweepy.StreamListener):
     def on_status(self, status):
         ws = create_connection(setting.WEBSOCKET_SERVER_URL)
         data = json.dumps(
-            {'type': 'twitter', 'icon_url': status.profile_image_url, 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text})
+            {'type': 'twitter', 'icon_url': status.user.profile_image_url, 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text})
         ws.send(data)
 
         logger.debug(data+'\n')
@@ -41,4 +41,4 @@ if __name__ == '__main__':
 
     listener = Listener()
     stream = tweepy.Stream(auth, listener)
-    stream.filter(track=['アルセウス'])
+    stream.filter(track=['BUMP'])
