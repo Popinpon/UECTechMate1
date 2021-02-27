@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from gevent.pywsgi import WSGIServer
 from geventwebsocket.handler import WebSocketHandler
+from PIL import Image
 import os
 import json
 import time
 import base64
 import datetime
+from io import BytesIO
 
 app = Flask(__name__, static_folder='../dist/static',
             template_folder='../dist')
@@ -21,10 +23,18 @@ def get_schedule():
 
 @app.route('/save_img', methods=['POST'])
 def save_img():
-    data = request.data.decode('utf-8')
-    data_json = json.loads(data)
-    image = data_json['image']
-    image_dec = base64.b64decode(image)
+    json_data = request.get_json()
+    dict_data = json.loads(json_data)
+    img = dict_data["img"]
+    room_type = dict_data["room_type"]
+    img = base64.b64decode(img)
+    img = BytesIO(img)
+    img = Image.open(img)
+    img.save('../dist/static/img/Room'+room_type+'.png')
+    img_shape = img.size
+    text = dict_data["text"]
+    response = {"text": text, "img_shape": img_shape}
+    return jsonify(response)
 
 
 @app.route('/', defaults={'path': ''})
