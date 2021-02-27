@@ -70,7 +70,7 @@
           <div id="wideCard" class="w-full bg-white">
             <div v-for="data in schedule.second_day.all_holl" :key="data">
               <WideCard v-bind="data"/>
-              </div>
+            </div>
           </div>
           <div id="cards" class="flex justify-center">
             <div v-for="(holl, key) in schedule.second_day.separate_holl" :key="key" class="w-1/3" :class="{'bg-green-200': key === 'A', 'bg-pink-200': key === 'B', 'bg-purple-200': key === 'C'}">

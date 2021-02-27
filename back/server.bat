@@ -1,0 +1,9 @@
+SET TARGET_EXE1=python main.py
+SET TARGET_EXE2=python twitter.py
+SET TARGET_EXE3=node server.js
+SET TARGET_EXE4=python youtube.py
+
+START "" %TARGET_EXE3%
+START "" %TARGET_EXE1%
+START "" %TARGET_EXE2%
+START "" %TARGET_EXE4%
