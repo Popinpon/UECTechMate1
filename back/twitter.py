@@ -2,12 +2,19 @@ import tweepy
 import requests
 import json
 import setting
+from websocket import create_connection
 
 
 class Listener(tweepy.StreamListener):
     def on_status(self, status):
-        response = requests.post(
-            'http://127.0.0.1:5000/twitter_data', json.dumps({'text': status.text}), headers={'Content-Type': 'application/json'})
+        print('----------------------')
+        print(status.text)
+        print("")
+        ws = create_connection("ws://localhost:5001")
+        ws.send(json.dumps(
+            {'type': 'twitter', 'id': status.id, 'created_at': str(status.created_at), 'text': status.text}))
+        result = ws.recv()
+        ws.close()
         return True
 
     def on_error(self, status_code):
@@ -30,7 +37,7 @@ if __name__ == '__main__':
 
     listener = Listener()
     stream = tweepy.Stream(auth, listener)
-    stream.filter(track=['#金曜ロードSHOW'])
+    stream.filter(track=['アルセウス'])
 
     # api = tweepy.API(auth, wait_on_rate_limit=True)
 
