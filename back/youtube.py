@@ -5,7 +5,7 @@ import json
 import datetime
 import dateutil.parser
 import setting
-
+from websocket import create_connection
 
 def get_chat_id(yt_url):
     '''
@@ -15,7 +15,7 @@ def get_chat_id(yt_url):
     print('video_id : ', video_id)
 
     url = 'https://www.googleapis.com/youtube/v3/videos'
-    params = {'key': YT_API_KEY, 'id': video_id,
+    params = {'key': setting.YT_API_KEY, 'id': video_id,
               'part': 'liveStreamingDetails'}
     data = requests.get(url, params=params).json()
 
@@ -38,47 +38,52 @@ def get_chat(chat_id, pageToken, log_file):
     https://developers.google.com/youtube/v3/live/docs/liveChatMessages/list
     '''
     url = 'https://www.googleapis.com/youtube/v3/liveChat/messages'
-    params = {'key': YT_API_KEY, 'liveChatId': chat_id,
-              'part': 'id,snippet'}  # ,authorDetails'}#コメント主のチャンネル詳細
+    params = {'key': setting.YT_API_KEY, 'liveChatId': chat_id,'part': 'id,snippet,authorDetails'} #コメント主のチャンネル詳細
     if type(pageToken) == str:
         params['pageToken'] = pageToken
 
     data = requests.get(url, params=params).json()
+
     if len(data['items']) > 0:
         try:
-            for item in data['items']:
+            for i,item in enumerate(data['items']):
 
                 channelId = item['snippet']['authorChannelId']
                 msg = item['snippet']['displayMessage']
-                # usr       = item['authorDetails']['displayName']#コメント主名
+                usr       = item['authorDetails']['displayName']#コメント主名
                 # supChat   = item['snippet']['superChatDetails']#スパチャ
                 #supStic   = item['snippet']['superStickerDetails']
-                log_text = '#'+msg
-                with open(log_file, 'a') as f:
-                    print(log_text, file=f)
-                    print(log_text)
+                msg += '#'
+                # with open(log_file, 'a') as f:
+                #     print(log_text, file=f)
+                #     print(log_text)
 
-            JST = datetime.timezone(datetime.timedelta(
-                hours=+9), 'JST')  # ISO表記のUTCー＞JSTへ
+                JST = datetime.timezone(datetime.timedelta(
+                    hours=+9), 'JST')  # ISO表記のUTCー＞JSTへ
+                at= data['items'][i]['snippet']['publishedAt']
+                at = dateutil.parser.parse(at).astimezone(JST)
+                at = "{0:%Y-%m-%d %H:%M:%S}".format(at)
+                print("test")
+                ws = create_connection("ws://localhost:5001")
+                jmsg=json.dumps({'type': 'youtube', 'id':" ", 'user_id': usr,'user_id':channelId , 'created_at': str(at), 'text': msg})
 
-            start = data['items'][0]['snippet']['publishedAt']
-            start = dateutil.parser.parse(start).astimezone(JST)
-            start = "{0:%Y-%m-%d %H:%M:%S}".format(start)
-            end = data['items'][-1]['snippet']['publishedAt']
-            end = dateutil.parser.parse(end).astimezone(JST)
-            end = "{0:%Y-%m-%d %H:%M:%S}".format(end)
-            print('start : ', start)
-            print('end   : ', end)
+                ws.send(jmsg)
+                result = ws.recv()
+                ws.close()
+
+                print(jmsg)
 
         except Exception as e:
             print(e+"err!")
+    else:
+        print("no comments")
 
     return data['nextPageToken']
 
 
 def main(yt_url):
-    slp_time = 2  # sec
-    iter_times = 2  # 回
+    slp_time = 10  # sec
+    iter_times = 5  # 回
     take_time = slp_time / 60 * iter_times
     print('{}分後　終了予定'.format(take_time))
     print('work on {}'.format(yt_url))
@@ -87,7 +92,6 @@ def main(yt_url):
     with open(log_file, 'a') as f:
         print('{} のチャット欄を記録します。'.format(yt_url), file=f)
     chat_id = get_chat_id(yt_url)
-
     nextPageToken = None
     for ii in range(iter_times):
         # for jj in [0]:
@@ -98,7 +102,6 @@ def main(yt_url):
         except:
             break
 
-
 if __name__ == '__main__':
-    yt_url = input('Input YouTube URL > ')
-    main(yt_url)
+
+    main(setting.YT_URL["RoomA"])
