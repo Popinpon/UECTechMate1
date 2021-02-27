@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="overflow-x-hidden">
     <div class="relative bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center border-b-2 border-gray-100 py-2 md:justify-start md:space-x-10">
@@ -10,7 +10,7 @@
           </div>
           <nav class="hidden md:flex space-x-10">
             <button @click="isCalendar = !isCalendar" class="text-base font-medium hover:text-gray-900" :class="{'text-gray-500' : isCalendar, 'text-gray-900' : !isCalendar}" :disabled="!isCalendar">
-              api testing
+              RoomInfomation
             </button>
             <button @click="isCalendar = !isCalendar" class="text-base font-medium hover:text-gray-900" :class="{'text-gray-900' : isCalendar, 'text-gray-500' : !isCalendar}" :disabled="isCalendar">
               Calendar

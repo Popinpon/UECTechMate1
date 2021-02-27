@@ -1,5 +1,70 @@
 <template>
   <div class="bg-black text-white">
+    <p class="text-center font-sans text-7xl mb-9">Zoom TimeLine</p>
+
+    <div class="flex justify-between mb-6">
+      <div
+        @click="chamgeImage('left')"
+        class="w-1/5 h-20 rounded-full m-1 p-4 cursor-pointer"
+        :class="{
+          'bg-green-600': leftImage.room === 'A',
+          'bg-pink-600': leftImage.room === 'B',
+          'bg-purple-600': leftImage.room === 'C',
+        }"
+      >
+        <p class="font-mono text-5xl text-white extrabold text-center">
+          {{ "ホール" + leftImage.room }}
+        </p>
+      </div>
+      <div
+        class="w-1/3 h-20 rounded-full m-1 p-4"
+        :class="{
+          'bg-green-600': mainImage.room === 'A',
+          'bg-pink-600': mainImage.room === 'B',
+          'bg-purple-600': mainImage.room === 'C',
+        }"
+      >
+        <p class="font-mono text-5xl text-white extrabold text-center">
+          {{ "ホール" + mainImage.room }}
+        </p>
+      </div>
+      <div
+        @click="chamgeImage('right')"
+        class="w-1/5 h-20 rounded-full m-1 p-4 cursor-pointer"
+        :class="{
+          'bg-green-600': rightImage.room === 'A',
+          'bg-pink-600': rightImage.room === 'B',
+          'bg-purple-600': rightImage.room === 'C',
+        }"
+      >
+        <p class="font-mono text-5xl text-white extrabold text-center">
+          {{ "ホール" + rightImage.room }}
+        </p>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div
+        id="leftImage"
+        @click="chamgeImage('left')"
+        class="w-3/5 absolute transform -translate-x-3/4 cursor-pointer"
+      >
+        <img :src="leftImage.imageSrc" />
+      </div>
+      <div
+        id="rightImage"
+        @click="chamgeImage('right')"
+        class="w-3/5 absolute transform right-0 translate-x-3/4 cursor-pointer"
+      >
+        <img :src="rightImage.imageSrc" />
+      </div>
+      <div id="mainImage" class="flex justify-center mb-8">
+        <div class="w-3/5">
+          <img :src="mainImage.imageSrc" />
+        </div>
+      </div>
+    </div>
+
     <p class="text-center font-sans text-7xl mb-9">Responce</p>
     <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
@@ -20,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center mb-6">
+    <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
         <div
           class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-green-200"
@@ -48,75 +113,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <p class="text-center font-sans text-7xl mb-9">Twtter Responce</p>
-    <div class="flex justify-center">
-      <div class="w-4/5 flex justify-center mb-6">
-        <div class="w-1/3 h-20 bg-green-600 rounded-full m-1 p-4">
-          <p class="font-mono text-5xl text-white extrabold text-center">ホールA</p>
-        </div>
-        <div class="w-1/3 h-20 bg-pink-600 rounded-full m-1 p-4">
-          <p class="font-mono text-5xl text-white extrabold text-center">ホールB</p>
-        </div>
-        <div class="w-1/3 h-20 bg-purple-600 rounded-full m-1 p-4">
-          <p class="font-mono text-5xl text-white extrabold text-center">ホールC</p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-center mb-6">
-      <div class="w-4/5 flex justify-center mb-6">
-        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-green-200">
-          <div v-for="tweetA in twitterRoomAData" :key="tweetA.id">
-            <TwitterCard v-bind="tweetA"/>
-          </div>
-        </div>
-        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-pink-200">
-          <div v-for="tweetB in twitterRoomBData" :key="tweetB.id">
-            <TwitterCard v-bind="tweetB"/>
-          </div>
-        </div>
-        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-purple-200">
-          <div v-for="tweetC in twitterRoomCData" :key="tweetC.id">
-            <TwitterCard v-bind="tweetC"/>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- 
-    <p class="text-center font-sans text-7xl mb-9">Youtube Responce</p>
-    <div class="flex justify-center">
-      <div class="w-4/5 flex justify-center mb-6">
-        <div class="w-1/3 h-20 bg-green-600 rounded-full m-1 p-4">
-          <p class="font-mono text-5xl text-white extrabold text-center">ホールA</p>
-        </div>
-        <div class="w-1/3 h-20 bg-pink-600 rounded-full m-1 p-4">
-          <p class="font-mono text-5xl text-white extrabold text-center">ホールB</p>
-        </div>
-        <div class="w-1/3 h-20 bg-purple-600 rounded-full m-1 p-4">
-          <p class="font-mono text-5xl text-white extrabold text-center">ホールC</p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-4/5 flex justify-center mb-6">
-        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-green-200">
-          <div v-for="commentA in youtubeRoomAData" :key="commentA.id">
-            <YoutubeCard v-bind="commentA"/>
-          </div>
-        </div>
-        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-pink-200">
-          <div v-for="commentB in youtubeRoomBData" :key="commentB.id">
-            <YoutubeCard v-bind="commentB"/>
-          </div>
-        </div>
-        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-purple-200">
-          <div v-for="commentC in youtubeRoomCData" :key="commentC.id">
-            <YoutubeCard v-bind="commentC"/>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -132,15 +128,21 @@ export default Vue.extend({
   data() {
     return {
       imageSrc: "/static/img/no_image.jpg",
-      // youtubeRoomAData: [],
-      // youtubeRoomBData: [],
-      // youtubeRoomCData: [],
-      // twitterRoomAData: [],
-      // twitterRoomBData: [],
-      // twitterRoomCData: [],
       roomAData: [],
       roomBData: [],
       roomCData: [],
+      leftImage: {
+        imageSrc: "static/img/zoom_test.png",
+        room: "A",
+      },
+      mainImage: {
+        imageSrc: "static/img/zoom_test.png",
+        room: "B",
+      },
+      rightImage: {
+        imageSrc: "static/img/zoom_test.png",
+        room: "C",
+      },
     };
   },
   components: {
@@ -206,36 +208,17 @@ export default Vue.extend({
         })
         .then(function () {});
     },
-
-    // if (data.type == "twitter") {
-    //   if (data.room_type == "A") {
-    //     const list = this.twitterRoomAData;
-    //     list.push(data);
-    //     if (list.length >= 10) list.shift();
-    //   } else if (data.room_type == "B") {
-    //     const list = this.twitterRoomBData;
-    //     list.push(data);
-    //     if (list.length >= 10) list.shift();
-    //   } else {
-    //     const list = this.twitterRoomCData;
-    //     list.push(data);
-    //     if (list.length >= 10) list.shift();
-    //   }
-    // } else {
-    //   if (data.room_type == "A") {
-    //     const list = this.youtubeRoomAData;
-    //     list.push(data);
-    //     if (list.length >= 10) list.shift();
-    //   } else if (data.room_type == "B") {
-    //     const list = this.youtubeRoomBData;
-    //     list.push(data);
-    //     if (list.length >= 10) list.shift();
-    //   } else {
-    //     const list = this.youtubeRoomCData;
-    //     list.push(data);
-    //     if (list.length >= 10) list.shift();
-    //   }
-    // }
+    chamgeImage(direction) {
+      if (direction == "right") {
+        const tmp = this.mainImage;
+        this.mainImage = this.rightImage;
+        this.rightImage = tmp;
+      } else {
+        const tmp = this.mainImage;
+        this.mainImage = this.leftImage;
+        this.leftImage = tmp;
+      }
+    },
   },
 });
 </script>
