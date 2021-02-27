@@ -1,6 +1,45 @@
 <template>
   <div class="bg-black text-white">
-    <p class="text-center font-sans text-7xl mb-9">Twtter Responce</p>
+
+    <p class="text-center font-sans text-7xl mb-9">Responce</p>
+    <div class="flex justify-center">
+      <div class="w-4/5 flex justify-center mb-6">
+        <div class="w-1/3 h-20 bg-green-600 rounded-full m-1 p-4">
+          <p class="font-mono text-5xl text-white extrabold text-center">ホールA</p>
+        </div>
+        <div class="w-1/3 h-20 bg-pink-600 rounded-full m-1 p-4">
+          <p class="font-mono text-5xl text-white extrabold text-center">ホールB</p>
+        </div>
+        <div class="w-1/3 h-20 bg-purple-600 rounded-full m-1 p-4">
+          <p class="font-mono text-5xl text-white extrabold text-center">ホールC</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center mb-6">
+      <div class="w-4/5 flex justify-center mb-6">
+        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-green-200">
+          <div v-for="roomA in roomAData" :key="roomA.id">
+            <TwitterCard v-if="roomA.type == 'twitter'" v-bind="roomA"/>
+            <YoutubeCard v-else v-bind="roomA"/>
+          </div>
+        </div>
+        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-pink-200">
+          <div v-for="roomB in roomBData" :key="roomB.id">
+            <TwitterCard v-if="roomB.type == 'twitter'" v-bind="roomB"/>
+            <YoutubeCard v-else v-bind="roomB"/>
+          </div>
+        </div>
+        <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-purple-200">
+          <div v-for="roomC in roomBData" :key="roomC.id">
+            <TwitterCard v-if="roomC.type == 'twitter'" v-bind="roomC"/>
+            <YoutubeCard v-else v-bind="roomC"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <p class="text-center font-sans text-7xl mb-9">Twtter Responce</p>
     <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
         <div class="w-1/3 h-20 bg-green-600 rounded-full m-1 p-4">
@@ -32,7 +71,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+<!-- 
     <p class="text-center font-sans text-7xl mb-9">Youtube Responce</p>
     <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
@@ -65,7 +106,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
   </div>
 </template>
 
@@ -80,12 +122,15 @@ export default Vue.extend({
   data() {
     return {
       imageSrc: "/static/img/no_image.jpg",
-      youtubeRoomAData: [],
-      youtubeRoomBData: [],
-      youtubeRoomCData: [],
-      twitterRoomAData: [],
-      twitterRoomBData: [],
-      twitterRoomCData: [],
+      // youtubeRoomAData: [],
+      // youtubeRoomBData: [],
+      // youtubeRoomCData: [],
+      // twitterRoomAData: [],
+      // twitterRoomBData: [],
+      // twitterRoomCData: [],
+      roomAData: [],
+      roomBData: [],
+      roomCData: [],
     };
   },
   components: {
@@ -104,35 +149,50 @@ export default Vue.extend({
   methods: {
     addData(data) {
       // youtubeとtwitter仕分けしていろいろ
-      if (data.type == "twitter") {
-        if (data.room_type == "A") {
-          const list = this.twitterRoomAData;
-          list.push(data);
-          if (list.length >= 10) list.shift();
-        } else if (data.room_type == "B") {
-          const list = this.twitterRoomBData;
-          list.push(data);
-          if (list.length >= 10) list.shift();
-        } else {
-          const list = this.twitterRoomCData;
-          list.push(data);
-          if (list.length >= 10) list.shift();
-        }
+      if (data.room_type == "A") {
+        const list = this.roomAData;
+        list.push(data);
+        if (list.length >= 10) list.shift();
+      } else if (data.room_type == "B") {
+        const list = this.roomBData;
+        list.push(data);
+        if (list.length >= 10) list.shift();
       } else {
-        if (data.room_type == "A") {
-          const list = this.youtubeRoomAData;
-          list.push(data);
-          if (list.length >= 10) list.shift();
-        } else if (data.room_type == "B") {
-          const list = this.youtubeRoomBData;
-          list.push(data);
-          if (list.length >= 10) list.shift();
-        } else {
-          const list = this.youtubeRoomCData;
-          list.push(data);
-          if (list.length >= 10) list.shift();
-        }
+        const list = this.roomCData;
+        list.push(data);
+        if (list.length >= 10) list.shift();
       }
+
+      // if (data.type == "twitter") {
+      //   if (data.room_type == "A") {
+      //     const list = this.twitterRoomAData;
+      //     list.push(data);
+      //     if (list.length >= 10) list.shift();
+      //   } else if (data.room_type == "B") {
+      //     const list = this.twitterRoomBData;
+      //     list.push(data);
+      //     if (list.length >= 10) list.shift();
+      //   } else {
+      //     const list = this.twitterRoomCData;
+      //     list.push(data);
+      //     if (list.length >= 10) list.shift();
+      //   }
+      // } else {
+      //   if (data.room_type == "A") {
+      //     const list = this.youtubeRoomAData;
+      //     list.push(data);
+      //     if (list.length >= 10) list.shift();
+      //   } else if (data.room_type == "B") {
+      //     const list = this.youtubeRoomBData;
+      //     list.push(data);
+      //     if (list.length >= 10) list.shift();
+      //   } else {
+      //     const list = this.youtubeRoomCData;
+      //     list.push(data);
+      //     if (list.length >= 10) list.shift();
+      //   }
+      // }
+
     },
   },
 });
