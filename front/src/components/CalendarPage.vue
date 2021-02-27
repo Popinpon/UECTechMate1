@@ -60,7 +60,7 @@
             <div v-for="holl in schedule.first_day.separate_holl" :key="holl" class="w-1/3">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-bind="data"/>
-                <div class="h-7"></div>
+                <div v-if="data.time_end !== '18:00'" class="h-7"></div>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
             <div v-for="holl in schedule.second_day.separate_holl" :key="holl" class="w-1/3">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-bind="data"/>
-                <div class="h-7"></div>
+                <div v-if="data.time_end !== '18:00'" class="h-7"></div>
               </div>
             </div>
           </div>
@@ -100,11 +100,17 @@
             <div v-for="holl in schedule.third_day.separate_holl" :key="holl" class="w-1/3">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-if="data.time_start !== '11:00'" v-bind="data"/>
-                <div v-if="data.time_start !== '11:00'" class="h-7"></div>
+                <div v-if="data.time_start !== '11:00' && data.time_end !== '18:00'" class="h-7"></div>
               </div>
             </div>
           </div>
         </template>
+
+        <div id="wideCard" class="w-full">
+          <div v-for="data in schedule.third_day.gathering" :key="data">
+            <WideCard v-bind="data"/>
+          </div>
+        </div>
 
       </div>
     </template>
