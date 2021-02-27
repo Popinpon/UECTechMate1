@@ -13,6 +13,7 @@ Flask = "*"
 python-dotenv = "*"
 websocket-client = "*"
 pillow = "*"
+flask-cors = "*"
 
 [dev-packages]
 

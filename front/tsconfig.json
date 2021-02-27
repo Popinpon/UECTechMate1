@@ -9,11 +9,12 @@
       "es2020"
     ],
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "paths": {
       "@/*": [
-       "./*"
+        "./*"
       ]
-     }
+    }
   }
 }

@@ -19,6 +19,6 @@ json_data = {
     "room_type": "A",
     "img": img_str
 }
-r = requests.post("http://127.0.0.1:5000/save_img",
+r = requests.post("http://localhost:5000/save_img",
                   json=json.dumps(json_data))
 print(r.json())

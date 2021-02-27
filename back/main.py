@@ -7,10 +7,12 @@ import json
 import time
 import base64
 import datetime
+from flask_cors import CORS
 from io import BytesIO
 
 app = Flask(__name__, static_folder='../dist/static',
             template_folder='../dist')
+CORS(app)
 
 
 @app.route('/get_schedule_json', methods=['POST'])
@@ -33,6 +35,17 @@ def save_img():
     img.save(os.path.abspath('../dist/static/img/')+'/Room'+room_type+'.png')
     img_shape = img.size
     response = {"img_shape": img_shape}
+    return jsonify(response)
+
+
+@app.route('/init_json', methods=['POST'])
+def init_json():
+    json_roomA = json.load(open('../dist/static/responses/roomA.json', 'r'))
+    json_roomB = json.load(open('../dist/static/responses/roomB.json', 'r'))
+    json_roomC = json.load(open('../dist/static/responses/roomC.json', 'r'))
+    response = {
+        "roomA": json_roomA, "roomB": json_roomB, "roomC": json_roomC
+    }
     return jsonify(response)
 
 
