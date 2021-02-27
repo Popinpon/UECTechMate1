@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 tweepy
 gevent
 gevent-websocket
@@ -6,3 +7,4 @@ requests
 websocket
 python-dotenv
 pillow
+selenium
