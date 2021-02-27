@@ -7,6 +7,7 @@ import dateutil.parser
 import setting
 from websocket import create_connection
 
+
 def get_chat_id(yt_url):
     '''
     https://developers.google.com/youtube/v3/docs/videos/list?hl=ja
@@ -38,7 +39,8 @@ def get_chat(chat_id, pageToken, log_file):
     https://developers.google.com/youtube/v3/live/docs/liveChatMessages/list
     '''
     url = 'https://www.googleapis.com/youtube/v3/liveChat/messages'
-    params = {'key': setting.YT_API_KEY, 'liveChatId': chat_id,'part': 'id,snippet,authorDetails'} #コメント主のチャンネル詳細
+    params = {'key': setting.YT_API_KEY, 'liveChatId': chat_id,
+              'part': 'id,snippet,authorDetails'}  # コメント主のチャンネル詳細
     if type(pageToken) == str:
         params['pageToken'] = pageToken
 
@@ -46,11 +48,11 @@ def get_chat(chat_id, pageToken, log_file):
 
     if len(data['items']) > 0:
         try:
-            for i,item in enumerate(data['items']):
+            for i, item in enumerate(data['items']):
 
                 channelId = item['snippet']['authorChannelId']
                 msg = item['snippet']['displayMessage']
-                usr       = item['authorDetails']['displayName']#コメント主名
+                usr = item['authorDetails']['displayName']  # コメント主名
                 icon = item['authorDetails']['profileImageUrl']
                 # supChat   = item['snippet']['superChatDetails']#スパチャ
                 #supStic   = item['snippet']['superStickerDetails']
@@ -61,13 +63,13 @@ def get_chat(chat_id, pageToken, log_file):
 
                 JST = datetime.timezone(datetime.timedelta(
                     hours=+9), 'JST')  # ISO表記のUTCー＞JSTへ
-                at= data['items'][i]['snippet']['publishedAt']
+                at = data['items'][i]['snippet']['publishedAt']
                 at = dateutil.parser.parse(at).astimezone(JST)
                 at = "{0:%Y-%m-%d %H:%M:%S}".format(at)
                 print("test")
                 ws = create_connection("ws://localhost:5001")
-                jmsg=json.dumps({'type': 'youtube', 'id':" ",\
-                'user':usr ,'user_id':channelId , 'created_at': str(at), 'text': msg,'icon':icon})
+                jmsg = json.dumps({'type': 'youtube', 'id': " ",
+                                   'user': usr, 'user_id': channelId, 'created_at': str(at), 'text': msg, 'icon': icon})
 
                 ws.send(jmsg)
                 result = ws.recv()
@@ -90,9 +92,7 @@ def main(yt_url):
     print('{}分後　終了予定'.format(take_time))
     print('work on {}'.format(yt_url))
 
-    log_file = yt_url.replace('https://www.youtube.com/watch?v=', '') + '.txt'
-    with open(log_file, 'a') as f:
-        print('{} のチャット欄を記録します。'.format(yt_url), file=f)
+#    log_file = yt_url.replace('https://www.youtube.com/watch?v=', '') + '.txt'
     chat_id = get_chat_id(yt_url)
     nextPageToken = None
     for ii in range(iter_times):
@@ -103,6 +103,7 @@ def main(yt_url):
             time.sleep(slp_time)
         except:
             break
+
 
 if __name__ == '__main__':
 

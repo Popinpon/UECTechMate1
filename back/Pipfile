@@ -12,6 +12,7 @@ websocket = "*"
 Flask = "*"
 python-dotenv = "*"
 websocket-client = "*"
+pillow = "*"
 
 [dev-packages]
 

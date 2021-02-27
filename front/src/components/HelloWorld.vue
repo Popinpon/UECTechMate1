@@ -34,21 +34,20 @@
 
 <script lang="ts">
 import Vue from "vue";
-import YoutubeCard from "./YoutubeCard.vue"
-import TwitterCard from "./TwitterCard.vue"
 
 export default Vue.extend({
   name: "HelloWorld",
   props: {},
   data() {
     return {
-      youtubeTextData: [],
-      twitterTextData: [], // type:String,id:String?,created_at:String,text:String
+      imageSrc: "/static/img/no_image.jpg",
+      youtubeRoomAData: [],
+      youtubeRoomBData: [],
+      youtubeRoomCData: [],
+      twitterRoomAData: [],
+      twitterRoomBData: [],
+      twitterRoomCData: [],
     };
-  },
-  components: {
-    YoutubeCard,
-    TwitterCard,
   },
   mounted() {
     const socket = new WebSocket("ws://localhost:5001");
@@ -63,13 +62,33 @@ export default Vue.extend({
     addData(data) {
       // youtubeとtwitter仕分けしていろいろ
       if (data.type == "twitter") {
-        const list = this.twitterTextData;
-        list.push(data);
-        if (list.length >= 10) list.shift();
+        if (data.room_type == "A") {
+          const list = this.twitterRoomAData;
+          list.push(data);
+          if (list.length >= 10) list.shift();
+        } else if (data.room_type == "B") {
+          const list = this.twitterRoomBData;
+          list.push(data);
+          if (list.length >= 10) list.shift();
+        } else {
+          const list = this.twitterRoomCData;
+          list.push(data);
+          if (list.length >= 10) list.shift();
+        }
       } else {
-        const list = this.youtubeTextData;
-        list.push(data);
-        if (list.length >= 10) list.shift();
+        if (data.room_type == "A") {
+          const list = this.youtubeRoomAData;
+          list.push(data);
+          if (list.length >= 10) list.shift();
+        } else if (data.room_type == "B") {
+          const list = this.youtubeRoomBData;
+          list.push(data);
+          if (list.length >= 10) list.shift();
+        } else {
+          const list = this.youtubeRoomCData;
+          list.push(data);
+          if (list.length >= 10) list.shift();
+        }
       }
     },
   },

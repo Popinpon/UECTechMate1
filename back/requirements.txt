@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 tweepy
 gevent
 gevent-websocket
@@ -5,3 +6,5 @@ Flask
 requests
 websocket
 python-dotenv
+pillow
+selenium
