@@ -30,7 +30,7 @@ def save_img():
     img = base64.b64decode(img)
     img = BytesIO(img)
     img = Image.open(img)
-    img.save('../dist/static/img/Room'+room_type+'.png')
+    img.save(os.path.abspath('../dist/static/img/')+'/Room'+room_type+'.png')
     img_shape = img.size
     text = dict_data["text"]
     response = {"text": text, "img_shape": img_shape}
