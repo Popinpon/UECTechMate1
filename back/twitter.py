@@ -4,7 +4,8 @@ import json
 import setting
 from websocket import create_connection
 from utils.logConf import logging
-
+import time
+import calendar
 logger = logging.getLogger(__name__)
 
 keyword1 = 'アルセウス'
@@ -12,6 +13,13 @@ keyword2 = 'BUMP'
 keyword3 = 'マイヤヒ'
 
 query_keywords = keyword1 + ',' + keyword2 + ',' + keyword3
+
+
+def utc_to_jst(created_at):
+    time_utc = time.strptime(created_at, '%Y-%m-%d %H:%M:%S')
+    unix_time = calendar.timegm(time_utc)
+    time_local = time.localtime(unix_time)
+    return time.strftime("%Y-%m-%d %H:%M:%S", time_local)
 
 
 class Listener(tweepy.StreamListener):
@@ -22,8 +30,9 @@ class Listener(tweepy.StreamListener):
             room_type = 'A'
         elif keyword2 in status.text:
             room_type = 'B'
+        created_at = utc_to_jst(str(status.created_at))
         data = json.dumps(
-            {'type': 'twitter', 'room_type': room_type, 'icon_url': status.user.profile_image_url, 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(status.created_at), 'text': status.text})
+            {'type': 'twitter', 'room_type': room_type, 'icon_url': status.user.profile_image_url, 'id': status.id, 'user': status.user.name, 'user_id': status.user.screen_name, 'created_at': str(created_at), 'text': status.text})
         ws.send(data)
         logger.debug(data+'\n')
         result = ws.recv()
