@@ -65,7 +65,7 @@ def get_chat(chat_id, pageToken, log_file):
                 at = "{0:%Y-%m-%d %H:%M:%S}".format(at)
                 print("test")
                 ws = create_connection("ws://localhost:5001")
-                jmsg=json.dumps({'type': 'youtube', 'id':" ", 'user_id': usr,'user_id':channelId , 'created_at': str(at), 'text': msg})
+                jmsg=json.dumps({'type': 'youtube', 'id':" ",'user':usr ,'user_id':channelId , 'created_at': str(at), 'text': msg})
 
                 ws.send(jmsg)
                 result = ws.recv()
