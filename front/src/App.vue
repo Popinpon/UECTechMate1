@@ -10,7 +10,7 @@
           </div>
           <nav class="hidden md:flex space-x-10">
             <button @click="isCalendar = !isCalendar" class="text-base font-medium hover:text-gray-900" :class="{'text-gray-500' : isCalendar, 'text-gray-900' : !isCalendar}" :disabled="!isCalendar">
-              api testing
+              Responce
             </button>
             <button @click="isCalendar = !isCalendar" class="text-base font-medium hover:text-gray-900" :class="{'text-gray-900' : isCalendar, 'text-gray-500' : !isCalendar}" :disabled="isCalendar">
               Calendar

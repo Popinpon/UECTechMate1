@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center mb-6">
+    <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
         <div class="w-1/3 bg-white border-2 rounded-md border-gray-300 m-1 bg-green-200">
           <div v-for="roomA in roomAData" :key="roomA.id">
