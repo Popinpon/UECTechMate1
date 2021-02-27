@@ -37,7 +37,7 @@
       </div>
     </div>
     <template v-show="!isLoading && schedule">
-      <div id="mainCards" class="bg-blue-200 w-3/4 rounded-tr-md">
+      <div id="mainCards" class="w-3/4 rounded-tr-md">
         <div id="cards" class="flex justify-center">
           <div class="h-20 w-1/3 bg-green-600 p-4">
             <p class="font-mono text-5xl text-white extrabold text-center">ホールA</p>
@@ -51,32 +51,32 @@
         </div>
 
         <template v-if="dayNum === 1">
-          <div id="wideCard" class="w-full">
+          <div id="wideCard" class="w-full bg-white">
             <div v-for="data in schedule.first_day.all_holl" :key="data">
               <WideCard v-bind="data"/>
             </div>
           </div>
           <div id="cards" class="flex justify-center">
-            <div v-for="holl in schedule.first_day.separate_holl" :key="holl" class="w-1/3">
+            <div v-for="(holl, key) in schedule.first_day.separate_holl" :key="key" class="w-1/3" :class="{'bg-green-200': key === 'A', 'bg-pink-200': key === 'B', 'bg-purple-200': key === 'C'}">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-bind="data"/>
-                <div class="h-7"></div>
+                <div v-if="data.time_end !== '18:00'" class="h-7"></div>
               </div>
             </div>
           </div>
         </template>
 
         <template v-else-if="dayNum === 2">
-          <div id="wideCard" class="w-full">
+          <div id="wideCard" class="w-full bg-white">
             <div v-for="data in schedule.second_day.all_holl" :key="data">
               <WideCard v-bind="data"/>
               </div>
           </div>
           <div id="cards" class="flex justify-center">
-            <div v-for="holl in schedule.second_day.separate_holl" :key="holl" class="w-1/3">
+            <div v-for="(holl, key) in schedule.second_day.separate_holl" :key="key" class="w-1/3" :class="{'bg-green-200': key === 'A', 'bg-pink-200': key === 'B', 'bg-purple-200': key === 'C'}">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-bind="data"/>
-                <div class="h-7"></div>
+                <div v-if="data.time_end !== '18:00'" class="h-7"></div>
               </div>
             </div>
           </div>
@@ -84,27 +84,33 @@
 
         <template v-else>
           <div id="cards" class="flex justify-center">
-            <div v-for="holl in schedule.third_day.separate_holl" :key="holl" class="w-1/3">
+            <div v-for="(holl, key) in schedule.third_day.separate_holl" :key="key" class="w-1/3" :class="{'bg-green-200': key === 'A', 'bg-pink-200': key === 'B', 'bg-purple-200': key === 'C'}">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-if="data.time_start === '11:00'" v-bind="data"/>
                 <div v-if="data.time_start === '11:00'" class="h-7"></div>
               </div>
             </div>
           </div>
-          <div id="wideCard" class="w-full">
+          <div id="wideCard" class="w-full bg-white">
             <div v-for="data in schedule.third_day.all_holl" :key="data">
               <WideCard v-bind="data"/>
             </div>
           </div>
           <div id="cards" class="flex justify-center">
-            <div v-for="holl in schedule.third_day.separate_holl" :key="holl" class="w-1/3">
+            <div v-for="(holl, key) in schedule.third_day.separate_holl" :key="key" class="w-1/3" :class="{'bg-green-200': key === 'A', 'bg-pink-200': key === 'B', 'bg-purple-200': key === 'C'}">
               <div v-for="data in holl" :key="data" v-bind="data">
                 <Card v-if="data.time_start !== '11:00'" v-bind="data"/>
-                <div v-if="data.time_start !== '11:00'" class="h-7"></div>
+                <div v-if="data.time_start !== '11:00' && data.time_end !== '18:00'" class="h-7"></div>
               </div>
             </div>
           </div>
         </template>
+
+        <div id="wideCard" class="w-full bg-white">
+          <div v-for="data in schedule.third_day.gathering" :key="data">
+            <WideCard v-bind="data"/>
+          </div>
+        </div>
 
       </div>
     </template>
