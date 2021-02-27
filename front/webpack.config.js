@@ -64,4 +64,18 @@ module.exports = {
   // optimization: {
   //   minimizer: [new OptimizeCSSAssetsPlugin({})],
   // },
+  devServer: {
+    // サーバーの起点ディレクトリ
+    // contentBase: "dist",
+    // バンドルされるファイルの監視 // パスがサーバー起点と異なる場合に設定
+    publicPath: '/dist',
+    //コンテンツの変更監視をする
+    watchContentBase: true,
+    // 実行時(サーバー起動時)ブラウザ自動起動
+    open: true,
+    // 自動で指定したページを開く
+    openPage: "index.html",
+    //　同一network内からのアクセス可能に
+    host: "0.0.0.0"
+  }
 };

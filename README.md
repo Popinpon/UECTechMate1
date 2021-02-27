@@ -1,6 +1,6 @@
 # UECTechMate1
 
-# front が更新されたら...
+# リポジトリが更新されたら...
 ```
 
 cd front
