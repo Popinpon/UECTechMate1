@@ -4,7 +4,7 @@ import json
 import base64
 from io import BytesIO
 import os
-import pillow
+
 # /save_imgに画像送るテスト
 
 img = Image.open(os.path.abspath('../dist/static/img/no_image.jpg'))

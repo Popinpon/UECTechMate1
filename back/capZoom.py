@@ -50,14 +50,14 @@ for count in range(repeatTime):
     for i,room in enumerate(room_names):
         time.sleep(1)
     #    element=driver.find_element_by_xpath('//*[@id="wc-container-left"]/div[4]/div/div[2]/canvas')
-        imgpath='../dit/static/img/'+room+str(count)+".png"
+        imgpath='../dist/static/img/'+room+str(count)+".png"
         png=driver.save_screenshot(imgpath)
         time.sleep(5)
 
 
-        img = Image.open(os.path.abspath(imgpath))
+        img = Image.open(imgpath)
         buffered = BytesIO()
-        img.save(buffered, format="JPEG")
+        img.save(buffered, format="PNG")
         img_byte = buffered.getvalue()
         img_base64 = base64.b64encode(img_byte)
 
