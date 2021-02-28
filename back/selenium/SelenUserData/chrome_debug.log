@@ -1,3 +1,0 @@
-[22972:11136:0228/044620.274:ERROR:device_event_log_impl.cc(211)] [04:46:20.273] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: システムに接続されたデバイスが機能していません。 (0x1F)
-[22972:11136:0228/044620.275:ERROR:device_event_log_impl.cc(211)] [04:46:20.274] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: システムに接続されたデバイスが機能していません。 (0x1F)
-[22972:11136:0228/044628.341:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
