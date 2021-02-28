@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black text-white">
-    <p class="text-center font-sans text-7xl mb-9">Zoom TimeLine</p>
+    <p class="text-center font-sans text-7xl mb-9">Zoom clippings</p>
 
     <div class="flex justify-between mb-6">
       <div
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <p class="text-center font-sans text-7xl mb-9">Responce</p>
+    <p class="text-center font-sans text-7xl mb-9">TimeLine</p>
     <div class="flex justify-center">
       <div class="w-4/5 flex justify-center mb-6">
         <div class="w-1/3 h-20 bg-green-600 rounded-full m-1 p-4">
@@ -165,16 +165,16 @@ export default Vue.extend({
       // youtubeとtwitter仕分けしていろいろ
       if (data.room_type == "A") {
         const list = this.roomAData;
-        list.push(data);
+        list.unshift(data);
         if (list.length >= 10) list.shift();
       } else if (data.room_type == "B") {
         const list = this.roomBData;
-        list.push(data);
+        list.unshift(data);
         if (list.length >= 10) list.shift();
       } else {
         const list = this.roomCData;
-        list.push(data);
-        if (list.length >= 10) list.shift();
+        list.unshift(data);
+        if (list.length >= 10) list.pop();
       }
     },
     initData() {

@@ -1,5 +1,6 @@
 <template>
   <div class="bg-black">
+    <p class="text-center font-sans text-7xl text-white mb-9">Time Schedule</p>
     <div>
       <nav class="flex flex-col sm:flex-row justify-center mb-4">
         <button
@@ -92,6 +93,11 @@
                 </div>
               </div>
             </div>
+            <div id="wideCard" class="w-full bg-white">
+              <div v-for="data in schedule.first_day.gathering" :key="data">
+                <WideCard v-bind="data" />
+              </div>
+            </div>
           </template>
 
           <template v-else-if="dayNum === 2">
@@ -115,6 +121,11 @@
                   <Card v-bind="data" />
                   <div v-if="data.time_end !== '18:00'" class="h-7"></div>
                 </div>
+              </div>
+            </div>
+            <div id="wideCard" class="w-full bg-white">
+              <div v-for="data in schedule.second_day.gathering" :key="data">
+                <WideCard v-bind="data" />
               </div>
             </div>
           </template>
@@ -164,13 +175,12 @@
                 </div>
               </div>
             </div>
-          </template>
-
-          <div id="wideCard" class="w-full bg-white">
-            <div v-for="data in schedule.third_day.gathering" :key="data">
-              <WideCard v-bind="data" />
+            <div id="wideCard" class="w-full bg-white">
+              <div v-for="data in schedule.third_day.gathering" :key="data">
+                <WideCard v-bind="data" />
+              </div>
             </div>
-          </div>
+          </template>
         </div>
       </template>
     </div>

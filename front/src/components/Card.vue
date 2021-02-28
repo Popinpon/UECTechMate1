@@ -6,7 +6,7 @@
       <div id="header-text" class="leading-5 ml-6 sm">
         <div class="flex justify-start">
           <h4 class="text-xl font-semibold">{{name}}</h4>
-          <a v-if="twitter" class="p-1" :href="twitter"><img class="w-5" src="/static/img/twitter.png"></a>
+          <a v-if="twitter" class="p-1" target="_blank" :href="twitter"><img class="w-5" src="/static/img/twitter.png"></a>
         </div>
         <h5 class="font-semibold  text-blue-600">{{job}}</h5>
       </div>
